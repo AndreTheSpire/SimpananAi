@@ -31,11 +31,17 @@ namespace ProyekAI
             this.PlayerO = new Player(PlayerName.O, new int[2] { 3, 4 });
             this.currentPlayer = PlayerX;
             this.GameIsDone = false;
-            RunGame();
+            for (int i = 1; i < 5; i++)
+            {
+                cbBoard.Items.Add(i);
+                comboBox1.Items.Add(i);
+            }
+            turnplayer.Text = "Turn :Player X";
+            Refresh();
+
         }
         public void RunGame()
         {
-            
                 TakeTurn(currentPlayer);
                 if (EndGame.BoardHasOnlyXsOrOs(mainBoards))
                 {
@@ -44,19 +50,21 @@ namespace ProyekAI
                 }
                 if (currentPlayer == PlayerO)
                 {
-                    currentPlayer = PlayerO;
+                    currentPlayer = PlayerX;
+                turnplayer.Text = "Turn :Player X";
                 }
                 else
                 {
-                    currentPlayer = PlayerX;
-                }
-            
+                    currentPlayer = PlayerO;
+                turnplayer.Text = "Turn :Player O";
+            }
+                
         }
 
         public void TakeTurn(Player player)
         {
             Refresh();
-            //Turn turn = new Turn(this);
+            Turn turn = new Turn(this);
         }
         /// <summary>
         /// Refreshes console with updated piece positions
@@ -140,14 +148,14 @@ namespace ProyekAI
         }
         public void createLabel(Panel panelx, Board board)
         {
-            int angka = 16;
+            int angka = -1;
             panelx.Controls.Clear();
             int x = 0, y = 0;
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    angka--;
+                    angka++;
                     Label l = new Label();
                     l.BorderStyle = BorderStyle.Fixed3D;
                     l.Size = new Size(100, 100);
@@ -179,6 +187,11 @@ namespace ProyekAI
                 x = 0;
                 y += 100;
             }
+        }
+
+        private void btnsubmitmove_Click(object sender, EventArgs e)
+        {
+            RunGame();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ProyekAI
 {
@@ -26,6 +27,10 @@ namespace ProyekAI
         // than the previous passive move's board
         public static bool BoardIsLegalForAggressiveMove(Move passiveMove, int boardNum)
         {
+            if (passiveMove == null)
+            {
+                return false;
+            }
             if (!(passiveMove.BoardMoveIsOn.BoardNumber % 2 != boardNum % 2))
             {
                 return false;
@@ -52,6 +57,7 @@ namespace ProyekAI
                     return false;
                 default:
                     Console.WriteLine("Not a valid board. Press enter to continue.");
+                    MessageBox.Show("Not a valid board");
                     Console.ReadLine();
                     return false;
             }

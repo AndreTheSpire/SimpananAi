@@ -11,6 +11,10 @@ namespace ProyekAI
         // Runs all checks and assigns appropriate broken rule to move if check failed
         public static bool MoveIsLegal(Move move)
         {
+            if (move == null)
+            {
+                return false;
+            }
             if (!MoveIsAStraightLine(move))
             {
                 move.BrokenRule = MoveRules.StraightLine;
@@ -163,8 +167,13 @@ namespace ProyekAI
 
         public static string PrintErrorMessage(Move move)
         {
+            if (move == null)
+            {
+                return "gak ada move";
+            }
             switch (move.BrokenRule)
             {
+
                 case MoveRules.StraightLine:
                     return "Your piece must move in a straight line.";
                 case MoveRules.LegalDistance:

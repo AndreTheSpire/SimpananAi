@@ -16,6 +16,7 @@ namespace ProyekAI
             this.BoardMoveIsOn = board;
             this.PlayerMakingMove = player;
             this.IsPassive = isPassive;
+           
         }
         public MoveRules BrokenRule { get; set; }
         public PlayerName PlayerMakingMove { get; }

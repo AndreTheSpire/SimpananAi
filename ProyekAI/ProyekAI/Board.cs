@@ -54,7 +54,7 @@ namespace ProyekAI
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    this.SquaresOnBoard[squareIndex] = new Square(j, i);
+                    this.SquaresOnBoard[squareIndex] = new Square(j + 1, i + 1);
                     squareIndex++;
                 }
             }
