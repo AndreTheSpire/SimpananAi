@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyekAI
 {
-    class Square
+    public class Square
     {
         public Square(int xCoordinate, int yCoordinate)
         {

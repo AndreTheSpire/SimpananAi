@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyekAI
 {
-    class Board
+    public class Board
     {
         public Square[] SquaresOnBoard { get; }
         public int BoardNumber { get; }
@@ -54,7 +54,7 @@ namespace ProyekAI
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    this.SquaresOnBoard[squareIndex] = new Square(j + 1, i + 1);
+                    this.SquaresOnBoard[squareIndex] = new Square(j, i);
                     squareIndex++;
                 }
             }
