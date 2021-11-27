@@ -87,10 +87,10 @@ namespace ProyekAI
         /// </summary>
         public void Refresh()
         {
-            createLabel(panel1, mainBoards[0]);
-            createLabel(panel2, mainBoards[1]);
-            createLabel(panel3, mainBoards[2]);
-            createLabel(panel4, mainBoards[3]);
+            createLabel(panel1, mainBoards[0],0);
+            createLabel(panel2, mainBoards[1],1);
+            createLabel(panel3, mainBoards[2],2);
+            createLabel(panel4, mainBoards[3],3);
             //string[] letterList = new string[4] { "A", "B", "C", "D" };
             //Console.Clear();
 
@@ -162,7 +162,7 @@ namespace ProyekAI
                 }
             }
         }
-        public void createLabel(Panel panelx, Board board)
+        public void createLabel(Panel panelx, Board board,int warna)
         {
             int angka = -1;
             panelx.Controls.Clear();
@@ -174,7 +174,7 @@ namespace ProyekAI
                     angka++;
                     Label l = new Label();
                     l.BorderStyle = BorderStyle.Fixed3D;
-                    l.Size = new Size(100, 100);
+                    l.Size = new Size(50, 50);
                     l.TextAlign = ContentAlignment.MiddleCenter;
                     l.Location = new Point(x, y);
                     l.Font = new Font("Arial", 24, FontStyle.Bold);
@@ -187,6 +187,10 @@ namespace ProyekAI
                     //{
                     //    l.BackColor = Color.BurlyWood;
                     //}
+                    if (warna == 1 || warna == 3)
+                    {
+                        l.BackColor = Color.DimGray;
+                    }
 
                     if (board.SquaresOnBoard[angka].HasO)
                     {
@@ -198,16 +202,31 @@ namespace ProyekAI
                     
 
                     panelx.Controls.Add(l);
-                    x += 100;
+                    x += 50;
                 }
                 x = 0;
-                y += 100;
+                y += 50;
             }
         }
 
         private void btnsubmitmove_Click(object sender, EventArgs e)
         {
             RunGame();
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
