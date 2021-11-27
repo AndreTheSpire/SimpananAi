@@ -47,7 +47,8 @@ namespace ProyekAI
                 TakeTurn(currentPlayer);
                 if (EndGame.BoardHasOnlyXsOrOs(mainBoards))
                 {
-                    //console.writeline(endgame.determinewinner(mainboards) + " is the winner!");
+                //console.writeline(endgame.determinewinner(mainboards) + " is the winner!");
+                MessageBox.Show(EndGame.DetermineWinner(mainBoards) + " is the winner!");
                     GameIsDone = true;
                 }
                 reset();
