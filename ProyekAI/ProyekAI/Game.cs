@@ -132,7 +132,15 @@ namespace ProyekAI
 
         private void btnsubmitmove_Click(object sender, EventArgs e)
         {
-            RunGame();
+            if (GameIsDone == false)
+            {
+                RunGame();
+            }
+            else
+            {
+                MessageBox.Show("Game sudah berakhir!")
+            }
+            
         }
 
         private void label18_Click(object sender, EventArgs e)
