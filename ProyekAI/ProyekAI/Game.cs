@@ -106,14 +106,7 @@ namespace ProyekAI
                     l.Location = new Point(x, y);
                     l.Font = new Font("Arial", 24, FontStyle.Bold);
 
-                    //if (board == 2 || board == 4)
-                    //{
-                    //    l.BackColor = Color.Brown;
-                    //}
-                    //else
-                    //{
-                    //    l.BackColor = Color.BurlyWood;
-                    //}
+                    
                     if (warna == 1 || warna == 3)
                     {
                         l.BackColor = Color.DimGray;
@@ -152,6 +145,11 @@ namespace ProyekAI
         }
 
         private void label23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label48_Click(object sender, EventArgs e)
         {
 
         }

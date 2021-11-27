@@ -93,11 +93,12 @@ namespace ProyekAI
             this.label45 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnsubmitmove
             // 
-            this.btnsubmitmove.Location = new System.Drawing.Point(931, 504);
+            this.btnsubmitmove.Location = new System.Drawing.Point(931, 526);
             this.btnsubmitmove.Name = "btnsubmitmove";
             this.btnsubmitmove.Size = new System.Drawing.Size(75, 23);
             this.btnsubmitmove.TabIndex = 30;
@@ -108,7 +109,7 @@ namespace ProyekAI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(928, 235);
+            this.label4.Location = new System.Drawing.Point(928, 257);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 17);
@@ -118,7 +119,7 @@ namespace ProyekAI
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(928, 203);
+            this.label5.Location = new System.Drawing.Point(928, 225);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 17);
@@ -127,7 +128,7 @@ namespace ProyekAI
             // 
             // tbYY
             // 
-            this.tbYY.Location = new System.Drawing.Point(1015, 230);
+            this.tbYY.Location = new System.Drawing.Point(1015, 252);
             this.tbYY.Margin = new System.Windows.Forms.Padding(4);
             this.tbYY.Name = "tbYY";
             this.tbYY.Size = new System.Drawing.Size(256, 22);
@@ -135,7 +136,7 @@ namespace ProyekAI
             // 
             // tbXX
             // 
-            this.tbXX.Location = new System.Drawing.Point(1016, 200);
+            this.tbXX.Location = new System.Drawing.Point(1016, 222);
             this.tbXX.Margin = new System.Windows.Forms.Padding(4);
             this.tbXX.Name = "tbXX";
             this.tbXX.Size = new System.Drawing.Size(255, 22);
@@ -144,7 +145,7 @@ namespace ProyekAI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(928, 67);
+            this.label3.Location = new System.Drawing.Point(928, 89);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 17);
@@ -154,7 +155,7 @@ namespace ProyekAI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(928, 169);
+            this.label2.Location = new System.Drawing.Point(928, 191);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 17);
@@ -164,7 +165,7 @@ namespace ProyekAI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(928, 137);
+            this.label1.Location = new System.Drawing.Point(928, 159);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 17);
@@ -174,7 +175,7 @@ namespace ProyekAI
             // Board
             // 
             this.Board.AutoSize = true;
-            this.Board.Location = new System.Drawing.Point(928, 102);
+            this.Board.Location = new System.Drawing.Point(928, 124);
             this.Board.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Board.Name = "Board";
             this.Board.Size = new System.Drawing.Size(54, 17);
@@ -184,7 +185,7 @@ namespace ProyekAI
             // cbBoard
             // 
             this.cbBoard.FormattingEnabled = true;
-            this.cbBoard.Location = new System.Drawing.Point(1016, 102);
+            this.cbBoard.Location = new System.Drawing.Point(1016, 124);
             this.cbBoard.Margin = new System.Windows.Forms.Padding(4);
             this.cbBoard.Name = "cbBoard";
             this.cbBoard.Size = new System.Drawing.Size(255, 24);
@@ -192,7 +193,7 @@ namespace ProyekAI
             // 
             // tbY
             // 
-            this.tbY.Location = new System.Drawing.Point(1015, 164);
+            this.tbY.Location = new System.Drawing.Point(1015, 186);
             this.tbY.Margin = new System.Windows.Forms.Padding(4);
             this.tbY.Name = "tbY";
             this.tbY.Size = new System.Drawing.Size(256, 22);
@@ -200,7 +201,7 @@ namespace ProyekAI
             // 
             // tbX
             // 
-            this.tbX.Location = new System.Drawing.Point(1016, 134);
+            this.tbX.Location = new System.Drawing.Point(1016, 156);
             this.tbX.Margin = new System.Windows.Forms.Padding(4);
             this.tbX.Name = "tbX";
             this.tbX.Size = new System.Drawing.Size(255, 22);
@@ -244,7 +245,7 @@ namespace ProyekAI
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(928, 463);
+            this.label6.Location = new System.Drawing.Point(928, 485);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 17);
@@ -254,7 +255,7 @@ namespace ProyekAI
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(928, 431);
+            this.label7.Location = new System.Drawing.Point(928, 453);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 17);
@@ -263,7 +264,7 @@ namespace ProyekAI
             // 
             // tbbYY
             // 
-            this.tbbYY.Location = new System.Drawing.Point(1015, 458);
+            this.tbbYY.Location = new System.Drawing.Point(1015, 480);
             this.tbbYY.Margin = new System.Windows.Forms.Padding(4);
             this.tbbYY.Name = "tbbYY";
             this.tbbYY.Size = new System.Drawing.Size(256, 22);
@@ -271,7 +272,7 @@ namespace ProyekAI
             // 
             // tbbXX
             // 
-            this.tbbXX.Location = new System.Drawing.Point(1016, 428);
+            this.tbbXX.Location = new System.Drawing.Point(1016, 450);
             this.tbbXX.Margin = new System.Windows.Forms.Padding(4);
             this.tbbXX.Name = "tbbXX";
             this.tbbXX.Size = new System.Drawing.Size(255, 22);
@@ -280,7 +281,7 @@ namespace ProyekAI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(928, 295);
+            this.label8.Location = new System.Drawing.Point(928, 317);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(106, 17);
@@ -290,7 +291,7 @@ namespace ProyekAI
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(928, 397);
+            this.label9.Location = new System.Drawing.Point(928, 419);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 17);
@@ -300,7 +301,7 @@ namespace ProyekAI
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(928, 365);
+            this.label10.Location = new System.Drawing.Point(928, 387);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(61, 17);
@@ -310,7 +311,7 @@ namespace ProyekAI
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(928, 330);
+            this.label11.Location = new System.Drawing.Point(928, 352);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(54, 17);
@@ -320,7 +321,7 @@ namespace ProyekAI
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1016, 330);
+            this.comboBox1.Location = new System.Drawing.Point(1016, 352);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(255, 24);
@@ -328,7 +329,7 @@ namespace ProyekAI
             // 
             // tbbY
             // 
-            this.tbbY.Location = new System.Drawing.Point(1015, 392);
+            this.tbbY.Location = new System.Drawing.Point(1015, 414);
             this.tbbY.Margin = new System.Windows.Forms.Padding(4);
             this.tbbY.Name = "tbbY";
             this.tbbY.Size = new System.Drawing.Size(256, 22);
@@ -336,7 +337,7 @@ namespace ProyekAI
             // 
             // tbbX
             // 
-            this.tbbX.Location = new System.Drawing.Point(1016, 362);
+            this.tbbX.Location = new System.Drawing.Point(1016, 384);
             this.tbbX.Margin = new System.Windows.Forms.Padding(4);
             this.tbbX.Name = "tbbX";
             this.tbbX.Size = new System.Drawing.Size(255, 22);
@@ -345,7 +346,7 @@ namespace ProyekAI
             // turnplayer
             // 
             this.turnplayer.AutoSize = true;
-            this.turnplayer.Location = new System.Drawing.Point(928, 34);
+            this.turnplayer.Location = new System.Drawing.Point(928, 56);
             this.turnplayer.Name = "turnplayer";
             this.turnplayer.Size = new System.Drawing.Size(54, 17);
             this.turnplayer.TabIndex = 42;
@@ -357,7 +358,7 @@ namespace ProyekAI
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(126, 52);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 39);
+            this.label12.Size = new System.Drawing.Size(36, 38);
             this.label12.TabIndex = 43;
             this.label12.Text = "0";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -368,7 +369,7 @@ namespace ProyekAI
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(249, 52);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(37, 39);
+            this.label14.Size = new System.Drawing.Size(36, 38);
             this.label14.TabIndex = 45;
             this.label14.Text = "2";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -380,7 +381,7 @@ namespace ProyekAI
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(317, 52);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 39);
+            this.label15.Size = new System.Drawing.Size(36, 38);
             this.label15.TabIndex = 46;
             this.label15.Text = "3";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -391,7 +392,7 @@ namespace ProyekAI
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(48, 120);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(37, 39);
+            this.label16.Size = new System.Drawing.Size(36, 38);
             this.label16.TabIndex = 47;
             this.label16.Text = "0";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -402,7 +403,7 @@ namespace ProyekAI
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(183, 52);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(37, 39);
+            this.label13.Size = new System.Drawing.Size(36, 38);
             this.label13.TabIndex = 44;
             this.label13.Text = "1";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -413,7 +414,7 @@ namespace ProyekAI
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(48, 184);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(37, 39);
+            this.label17.Size = new System.Drawing.Size(36, 38);
             this.label17.TabIndex = 48;
             this.label17.Text = "1";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -424,7 +425,7 @@ namespace ProyekAI
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(48, 248);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(37, 39);
+            this.label18.Size = new System.Drawing.Size(36, 38);
             this.label18.TabIndex = 49;
             this.label18.Text = "2";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -436,7 +437,7 @@ namespace ProyekAI
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(48, 315);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(37, 39);
+            this.label19.Size = new System.Drawing.Size(36, 38);
             this.label19.TabIndex = 50;
             this.label19.Text = "3";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -447,7 +448,7 @@ namespace ProyekAI
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(787, 56);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(37, 39);
+            this.label20.Size = new System.Drawing.Size(36, 38);
             this.label20.TabIndex = 54;
             this.label20.Text = "3";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -458,7 +459,7 @@ namespace ProyekAI
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(719, 56);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(37, 39);
+            this.label21.Size = new System.Drawing.Size(36, 38);
             this.label21.TabIndex = 53;
             this.label21.Text = "2";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -469,7 +470,7 @@ namespace ProyekAI
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(653, 56);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(37, 39);
+            this.label22.Size = new System.Drawing.Size(36, 38);
             this.label22.TabIndex = 52;
             this.label22.Text = "1";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -480,7 +481,7 @@ namespace ProyekAI
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(166, 3);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(143, 39);
+            this.label23.Size = new System.Drawing.Size(138, 38);
             this.label23.TabIndex = 51;
             this.label23.Text = "Board 1";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -492,7 +493,7 @@ namespace ProyekAI
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(317, 484);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(37, 39);
+            this.label24.Size = new System.Drawing.Size(36, 38);
             this.label24.TabIndex = 58;
             this.label24.Text = "3";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -503,7 +504,7 @@ namespace ProyekAI
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(249, 484);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(37, 39);
+            this.label25.Size = new System.Drawing.Size(36, 38);
             this.label25.TabIndex = 57;
             this.label25.Text = "2";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -514,7 +515,7 @@ namespace ProyekAI
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(183, 484);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(37, 39);
+            this.label26.Size = new System.Drawing.Size(36, 38);
             this.label26.TabIndex = 56;
             this.label26.Text = "1";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -525,7 +526,7 @@ namespace ProyekAI
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(126, 484);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(37, 39);
+            this.label27.Size = new System.Drawing.Size(36, 38);
             this.label27.TabIndex = 55;
             this.label27.Text = "0";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -536,7 +537,7 @@ namespace ProyekAI
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(787, 484);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(37, 39);
+            this.label28.Size = new System.Drawing.Size(36, 38);
             this.label28.TabIndex = 62;
             this.label28.Text = "3";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -547,7 +548,7 @@ namespace ProyekAI
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(719, 484);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(37, 39);
+            this.label29.Size = new System.Drawing.Size(36, 38);
             this.label29.TabIndex = 61;
             this.label29.Text = "2";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -558,7 +559,7 @@ namespace ProyekAI
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.Location = new System.Drawing.Point(653, 484);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(37, 39);
+            this.label30.Size = new System.Drawing.Size(36, 38);
             this.label30.TabIndex = 60;
             this.label30.Text = "1";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -569,7 +570,7 @@ namespace ProyekAI
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.Location = new System.Drawing.Point(596, 484);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(37, 39);
+            this.label31.Size = new System.Drawing.Size(36, 38);
             this.label31.TabIndex = 59;
             this.label31.Text = "0";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -580,7 +581,7 @@ namespace ProyekAI
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.Location = new System.Drawing.Point(513, 319);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(37, 39);
+            this.label32.Size = new System.Drawing.Size(36, 38);
             this.label32.TabIndex = 66;
             this.label32.Text = "3";
             this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -591,7 +592,7 @@ namespace ProyekAI
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.Location = new System.Drawing.Point(513, 252);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(37, 39);
+            this.label33.Size = new System.Drawing.Size(36, 38);
             this.label33.TabIndex = 65;
             this.label33.Text = "2";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -602,7 +603,7 @@ namespace ProyekAI
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(513, 188);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(37, 39);
+            this.label34.Size = new System.Drawing.Size(36, 38);
             this.label34.TabIndex = 64;
             this.label34.Text = "1";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -613,7 +614,7 @@ namespace ProyekAI
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(513, 124);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(37, 39);
+            this.label35.Size = new System.Drawing.Size(36, 38);
             this.label35.TabIndex = 63;
             this.label35.Text = "0";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -624,7 +625,7 @@ namespace ProyekAI
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(48, 746);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(37, 39);
+            this.label36.Size = new System.Drawing.Size(36, 38);
             this.label36.TabIndex = 70;
             this.label36.Text = "3";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -635,7 +636,7 @@ namespace ProyekAI
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.Location = new System.Drawing.Point(48, 679);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(37, 39);
+            this.label37.Size = new System.Drawing.Size(36, 38);
             this.label37.TabIndex = 69;
             this.label37.Text = "2";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -646,7 +647,7 @@ namespace ProyekAI
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.Location = new System.Drawing.Point(48, 615);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(37, 39);
+            this.label38.Size = new System.Drawing.Size(36, 38);
             this.label38.TabIndex = 68;
             this.label38.Text = "1";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -657,7 +658,7 @@ namespace ProyekAI
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label39.Location = new System.Drawing.Point(48, 551);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(37, 39);
+            this.label39.Size = new System.Drawing.Size(36, 38);
             this.label39.TabIndex = 67;
             this.label39.Text = "0";
             this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -668,7 +669,7 @@ namespace ProyekAI
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.Location = new System.Drawing.Point(513, 746);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(37, 39);
+            this.label40.Size = new System.Drawing.Size(36, 38);
             this.label40.TabIndex = 74;
             this.label40.Text = "3";
             this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -679,7 +680,7 @@ namespace ProyekAI
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.Location = new System.Drawing.Point(513, 679);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(37, 39);
+            this.label41.Size = new System.Drawing.Size(36, 38);
             this.label41.TabIndex = 73;
             this.label41.Text = "2";
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -690,7 +691,7 @@ namespace ProyekAI
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label42.Location = new System.Drawing.Point(513, 615);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(37, 39);
+            this.label42.Size = new System.Drawing.Size(36, 38);
             this.label42.TabIndex = 72;
             this.label42.Text = "1";
             this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -701,7 +702,7 @@ namespace ProyekAI
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label43.Location = new System.Drawing.Point(513, 551);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(37, 39);
+            this.label43.Size = new System.Drawing.Size(36, 38);
             this.label43.TabIndex = 71;
             this.label43.Text = "0";
             this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -712,7 +713,7 @@ namespace ProyekAI
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label44.Location = new System.Drawing.Point(634, 3);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(143, 39);
+            this.label44.Size = new System.Drawing.Size(138, 38);
             this.label44.TabIndex = 75;
             this.label44.Text = "Board 2";
             this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -723,7 +724,7 @@ namespace ProyekAI
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label45.Location = new System.Drawing.Point(596, 56);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(37, 39);
+            this.label45.Size = new System.Drawing.Size(36, 38);
             this.label45.TabIndex = 76;
             this.label45.Text = "0";
             this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -734,7 +735,7 @@ namespace ProyekAI
             this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label46.Location = new System.Drawing.Point(634, 425);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(143, 39);
+            this.label46.Size = new System.Drawing.Size(138, 38);
             this.label46.TabIndex = 77;
             this.label46.Text = "Board 4";
             this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -745,16 +746,27 @@ namespace ProyekAI
             this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label47.Location = new System.Drawing.Point(166, 425);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(143, 39);
+            this.label47.Size = new System.Drawing.Size(138, 38);
             this.label47.TabIndex = 78;
             this.label47.Text = "Board 3";
             this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(928, 21);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(209, 17);
+            this.label48.TabIndex = 79;
+            this.label48.Text = "Catatan : X kebawah Y kekanan";
+            this.label48.Click += new System.EventHandler(this.label48_Click);
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1517, 902);
+            this.Controls.Add(this.label48);
             this.Controls.Add(this.label47);
             this.Controls.Add(this.label46);
             this.Controls.Add(this.label45);
@@ -892,5 +904,6 @@ namespace ProyekAI
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label47;
+        public System.Windows.Forms.Label label48;
     }
 }
