@@ -17,33 +17,7 @@ namespace ProyekAI
         public Form1()
         {
             InitializeComponent();
-            Console.WriteLine("Welcome to Shobu!\n");
-            Console.WriteLine(Game.rules);
-            Console.WriteLine("Press enter to begin...");
-            Console.ReadLine();
-            while (true)
-            {
-                Game game = new Game();
-                //game.RunGame();
-                //Console.WriteLine("Play again? (Y/N)");
-                //if (!(Console.ReadLine().ToUpper() == "Y"))
-                //{
-                //    break;
-                //}
-            }
-            //Console.WriteLine("Thanks for playing!  Press enter to exit...");
-            //Console.ReadLine();
-            //initStones();
-
-            //createLabel(panel1, 1);
-            //createLabel(panel2, 2);
-            //createLabel(panel3, 3);
-            //createLabel(panel4, 4);
-
-            //for(int i=1; i<5; i++)
-            //{
-            //    cbBoard.Items.Add(i);
-            //}
+           
 
         }
 

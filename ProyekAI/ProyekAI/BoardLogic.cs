@@ -51,14 +51,14 @@ namespace ProyekAI
                     break;
                 case "rules":
                     Console.Clear();
-                    Console.WriteLine(Game.rules);
-                    Console.WriteLine("\nPress enter to resume.");
-                    Console.ReadLine();
+                    
+                   
                     return false;
                 default:
-                    Console.WriteLine("Not a valid board. Press enter to continue.");
-                    MessageBox.Show("Not a valid board");
-                    Console.ReadLine();
+                    MessageBox.Show("Not a valid board. Press enter to continue.");
+                    //Console.WriteLine("Not a valid board. Press enter to continue.");
+                    //MessageBox.Show("Not a valid board");
+                    //Console.ReadLine();
                     return false;
             }
             return true;
