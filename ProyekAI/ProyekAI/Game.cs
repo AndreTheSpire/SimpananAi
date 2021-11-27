@@ -29,7 +29,7 @@ namespace ProyekAI
             InitializeComponent();
             this.PlayerX = new Player(PlayerName.X, new int[2] { 1, 2 });
             this.PlayerO = new Player(PlayerName.O, new int[2] { 3, 4 });
-            this.currentPlayer = PlayerX;
+            this.currentPlayer = PlayerO;
             this.GameIsDone = false;
             for (int i = 1; i < 5; i++)
             {
@@ -38,7 +38,7 @@ namespace ProyekAI
             }
             cbBoard.SelectedIndex = 0;
             comboBox1.SelectedIndex = 0;
-            turnplayer.Text = "Turn :Player X";
+            turnplayer.Text = "Turn :Player O";
             Refresh();
 
         }
