@@ -36,6 +36,8 @@ namespace ProyekAI
                 cbBoard.Items.Add(i);
                 comboBox1.Items.Add(i);
             }
+            cbBoard.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
             turnplayer.Text = "Turn :Player X";
             Refresh();
 
@@ -48,17 +50,31 @@ namespace ProyekAI
                     //console.writeline(endgame.determinewinner(mainboards) + " is the winner!");
                     GameIsDone = true;
                 }
-                if (currentPlayer == PlayerO)
-                {
-                    currentPlayer = PlayerX;
-                turnplayer.Text = "Turn :Player X";
-                }
-                else
-                {
-                    currentPlayer = PlayerO;
-                turnplayer.Text = "Turn :Player O";
-            }
+                reset();
+                //if (currentPlayer == PlayerO)
+                //{
+                //    currentPlayer = PlayerX;
+                //turnplayer.Text = "Turn :Player X";
+                //}
+                //else
+                //{
+                //    currentPlayer = PlayerO;
+                //turnplayer.Text = "Turn :Player O";
+                //}
                 
+        }
+        public void reset()
+        {
+            tbX.Text = "";
+            tbXX.Text = "";
+            tbbX.Text = "";
+            tbbXX.Text = "";
+            tbY.Text = "";
+            tbYY.Text = "";
+            tbbY.Text = "";
+            tbbYY.Text = "";
+            cbBoard.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
         }
 
         public void TakeTurn(Player player)

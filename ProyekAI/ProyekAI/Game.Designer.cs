@@ -381,6 +381,6 @@ namespace ProyekAI
         public System.Windows.Forms.ComboBox comboBox1;
         public System.Windows.Forms.TextBox tbbY;
         public System.Windows.Forms.TextBox tbbX;
-        private System.Windows.Forms.Label turnplayer;
+        public System.Windows.Forms.Label turnplayer;
     }
 }

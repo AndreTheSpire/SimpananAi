@@ -12,7 +12,7 @@ namespace ProyekAI
     public class Turn
     {
         public bool TurnDone = false;
-        private Player CurrentPlayer { get; }
+        private Player CurrentPlayer { get; set; }
         private Board[] MainBoards { get; }
         private Board CurrentBoard { get; set;}
         private Square StartSquare { get; set; }
@@ -34,10 +34,16 @@ namespace ProyekAI
             ExecutePassiveTurn();
             if (EndGame.NoLegalAggressiveMove(currentGame))
             {
-                Console.WriteLine(this.CurrentPlayer.LastMoveMade);
-                Console.WriteLine("There are no legal aggressive moves based on that passive move.");
-                Console.WriteLine(EndGame.DisplayWinMessageForOpponent(CurrentPlayer));
-                currentGame.GameIsDone = true;
+                if(TurnDone == false)
+                {
+                    Console.WriteLine(this.CurrentPlayer.LastMoveMade);
+                    MessageBox.Show("There are no legal aggressive moves based on that passive move.");
+                    Console.WriteLine("There are no legal aggressive moves based on that passive move.");
+                    Console.WriteLine(EndGame.DisplayWinMessageForOpponent(CurrentPlayer));
+                    done();
+                    currentGame.GameIsDone = true;
+                }
+                
             }
             else
             {
@@ -98,6 +104,7 @@ namespace ProyekAI
             {
                 if (BoardLogic.BoardIsLegalForAggressiveMove(CurrentPlayer.LastMoveMade, CurrentBoard.BoardNumber) == false)
                 {
+                    ;
                     MessageBox.Show("Aggressive move must be made on a board of different color than your passive move.");
                     //Console.WriteLine("Aggressive move must be made on a board of different color than your passive move.");
                     //Console.ReadLine();
@@ -322,27 +329,38 @@ namespace ProyekAI
         /// </summary>
         private void ExecutePassiveTurn()
         {
-            
+            if (TurnDone == false)
+            {
+
                 if (GetUserInputForTurn())
                 {
                     CurrentGame.Refresh();
                 }
-                
+
                 if (MoveLogic.MoveIsLegal(this.CurrentMove))
                 {
-                    ExecuteCurrentMove(this.CurrentMove);
-                    CurrentPlayer.LastMoveMade = CurrentMove;
-                    TurnIsPassive = false;
-                    PassiveTurnDone = true;
-                    this.currentTurnType = TurnType.Aggressive;
+                    if (PassiveTurnDone == false)
+                    {
+                        ExecuteCurrentMove(this.CurrentMove);
+                        CurrentPlayer.LastMoveMade = CurrentMove;
+                        TurnIsPassive = false;
+                        PassiveTurnDone = true;
+                        this.currentTurnType = TurnType.Aggressive;
+                    }
                 }
                 else
                 {
-                    Console.WriteLine(MoveLogic.PrintErrorMessage(this.CurrentMove) + "  Press enter to continue...");
-                    Console.ReadLine();
+                    if (this.CurrentMove != null)
+                    {
+                        MessageBox.Show(MoveLogic.PrintErrorMessage(this.CurrentMove));
+                    }
+                    //Console.WriteLine(MoveLogic.PrintErrorMessage(this.CurrentMove) + "  Press enter to continue...");
+                    //    Console.ReadLine();
                     PassiveTurnDone = false;
+                    done();
                 }
                 CurrentGame.Refresh();
+            }
             
         }
         /// <summary>
@@ -350,25 +368,45 @@ namespace ProyekAI
         /// </summary>
         private void ExecuteAggressiveTurn()
         {
-           
+            if (TurnDone == false)
+            {
                 if (GetUserInputForTurn())
                 {
                     CurrentGame.Refresh();
                 }
                 //CurrentGame.Refresh();
                 Console.WriteLine(this.CurrentPlayer.LastMoveMade);
-                
+
                 if (MoveLogic.MoveIsLegal(this.CurrentMove) && MoveLogic.MatchesPassiveMoveWhileAggressive(this.CurrentMove, this.CurrentPlayer.LastMoveMade))
                 {
-                    ExecuteCurrentMove(this.CurrentMove);
-                    TurnDone = true;
+                    
+                        ExecuteCurrentMove(this.CurrentMove);
+                        if (CurrentPlayer == CurrentGame.PlayerO)
+                        {
+                            CurrentPlayer = CurrentGame.PlayerX;
+                            CurrentGame.currentPlayer = CurrentGame.PlayerX;
+                            CurrentGame.turnplayer.Text = "Turn :Player X";
+                        }
+                        else
+                        {
+                            CurrentPlayer = CurrentGame.PlayerO;
+                        CurrentGame.currentPlayer = CurrentGame.PlayerO;
+                        CurrentGame.turnplayer.Text = "Turn :Player O";
+                        }
+                        TurnDone = true;
+                    
+
                 }
                 else
                 {
-                    Console.WriteLine(MoveLogic.PrintErrorMessage(this.CurrentMove) + "  Press enter to continue...");
-                    Console.ReadLine();
+                    MessageBox.Show(MoveLogic.PrintErrorMessage(this.CurrentMove));
+                    done();
+                    //Console.WriteLine(MoveLogic.PrintErrorMessage(this.CurrentMove) + "  Press enter to continue...");
+                    //    Console.ReadLine();
                 }
                 CurrentGame.Refresh();
+            }
+                
             
         }
         /// <summary>
@@ -414,7 +452,17 @@ namespace ProyekAI
         {
             TurnDone = true;
             PassiveTurnDone = true;
-           
+            //if (CurrentPlayer == CurrentGame.PlayerO)
+            //{
+            //    CurrentPlayer = CurrentGame.PlayerX;
+            //    CurrentGame.turnplayer.Text="Turn :Player X";
+            //}
+            //else
+            //{
+            //    CurrentPlayer = CurrentGame.PlayerO;
+            //    CurrentGame.turnplayer.Text = "Turn :Player O";
+            //}
+
         }
     }
 }

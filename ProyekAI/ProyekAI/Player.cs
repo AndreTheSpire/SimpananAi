@@ -11,8 +11,8 @@ namespace ProyekAI
     /// </summary>
     public class Player
     {
-        public PlayerName Name { get; }
-        public int[] HomeBoards { get; }
+        public PlayerName Name { get; set; }
+        public int[] HomeBoards { get; set; }
         public Move LastMoveMade { get; set; }
         public Player(PlayerName name, int[] homeBoards)
         {
