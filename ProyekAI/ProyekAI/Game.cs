@@ -72,7 +72,22 @@ namespace ProyekAI
         public void TakeTurn(Player player)
         {
             Refresh();
-            Turn turn = new Turn(this);
+            if (currentPlayer==PlayerX)//kalau bot
+            {
+                //AI Jalan
+                //minimax
+                Board[] duplicatedBoard = new Board[4];
+                Array.Copy(mainBoards, duplicatedBoard, 4);
+                //boardEvaluator(duplicatedBoard);
+                Evaluator eval = new Evaluator(duplicatedBoard);
+                Action best = eval.bestAction;
+            }
+            else
+            {
+                Turn turn = new Turn(this);
+                
+            }
+            
         }
         /// <summary>
         /// Refreshes console with updated piece positions
@@ -138,9 +153,10 @@ namespace ProyekAI
             }
             else
             {
-                MessageBox.Show("Game sudah berakhir!")
+                MessageBox.Show("Game sudah berakhir!");
             }
-            
+
+
         }
 
         private void label18_Click(object sender, EventArgs e)

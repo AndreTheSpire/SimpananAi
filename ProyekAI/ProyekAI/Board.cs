@@ -65,6 +65,12 @@ namespace ProyekAI
             }
         }
 
+        public Board(Board board)
+        {
+            this.BoardNumber = board.BoardNumber;
+            this.SquaresOnBoard = board.SquaresOnBoard;
+        }
+
         public override string ToString()
         {
             return "Board " + this.BoardNumber;

@@ -29,3 +29,14 @@ D:\kuliahsemester_5\AI\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.csproj.Co
 D:\kuliahsemester_5\AI\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.exe
 D:\kuliahsemester_5\AI\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.pdb
 D:\kuliahsemester_5\AI\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.Game.resources
+E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\bin\Debug\ProyekAI.exe.config
+E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\bin\Debug\ProyekAI.exe
+E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\bin\Debug\ProyekAI.pdb
+E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.csprojAssemblyReference.cache
+E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.Form1.resources
+E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.Game.resources
+E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.Properties.Resources.resources
+E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.csproj.GenerateResource.cache
+E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.csproj.CoreCompileInputs.cache
+E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.exe
+E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.pdb
