@@ -77,8 +77,10 @@ namespace ProyekAI
                 //AI Jalan
                 //minimax
                 Board[] duplicatedBoard = new Board[4];
-                Array.Copy(mainBoards, duplicatedBoard, 4);
-                //boardEvaluator(duplicatedBoard);
+                for(int i= 0; i<4; i++)
+                {
+                    duplicatedBoard[i] = (Board)mainBoards[i].deepCopy();
+                }
                 Evaluator eval = new Evaluator(duplicatedBoard);
                 Action best = eval.bestAction;
                 currentPlayer = PlayerO;

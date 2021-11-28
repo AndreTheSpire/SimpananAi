@@ -26,6 +26,17 @@ namespace ProyekAI
                 return foundX;
             }
         }
+        public object deepCopy()
+        {
+            Square[] squares = new Square[16];
+            for(int i=0; i<16; i++)
+            {
+                squares[i] = (Square)this.SquaresOnBoard[i].deepCopy();
+            }
+            Board board = new Board(this.BoardNumber, squares);
+
+            return board;
+        }
 
         public bool HasOs
         {
@@ -44,7 +55,11 @@ namespace ProyekAI
             }
 
         }
-
+        public Board(int boardNumber, Square[] squares)
+        {
+            this.BoardNumber = boardNumber;
+            this.SquaresOnBoard = squares;
+        }
         public Board(int boardNumber)
         {
             this.BoardNumber = boardNumber;

@@ -9,6 +9,7 @@ namespace ProyekAI
     class Evaluator
     {
         public Board[] boards;
+        public Board[] duplicatedBoard;
         public List<Action> actions;
         public Action bestAction;
         public int index;
@@ -18,9 +19,11 @@ namespace ProyekAI
             {1,1}, {-1,-1}, {-1,1}, {1,-1},
             {2,2}, {-2,-2}, {-2,2}, {2,-2}
         };
-        public Evaluator(Board[] boards)
+        public Evaluator(Board[] duplicatedBoard)
         {
-            this.boards = boards;
+            this.duplicatedBoard = duplicatedBoard;
+            boards = new Board[4];
+            Array.Copy(duplicatedBoard, boards, 4);
             actions = new List<Action>();
             //Possibility setiap stone
             //passive = 0, 2
@@ -49,7 +52,7 @@ namespace ProyekAI
                                 Board newPassiveBoard = new Board(boards[0]);
                                 foreach (Square target in newPassiveBoard.SquaresOnBoard)
                                 {
-                                    if (target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate)
+                                    if (target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate &&target.HasX)
                                     {
                                         target.HasX = false;
 
@@ -62,7 +65,7 @@ namespace ProyekAI
                                 Board newAggresiveBoard = new Board(boards[1]);
                                 foreach (Square target in newPassiveBoard.SquaresOnBoard)
                                 {
-                                    if (target.XCoordinate == s1.XCoordinate && target.YCoordinate == s1.YCoordinate)
+                                    if (target.XCoordinate == s1.XCoordinate && target.YCoordinate == s1.YCoordinate && target.HasX)
                                     {
                                         target.HasX = false;
 
@@ -97,7 +100,7 @@ namespace ProyekAI
                                 Board newPassiveBoard = new Board(boards[0]);
                                 foreach(Square target in newPassiveBoard.SquaresOnBoard)
                                 {
-                                    if(target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate)
+                                    if(target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate && target.HasX)
                                     {
                                         target.HasX = false;
 
@@ -110,7 +113,7 @@ namespace ProyekAI
                                 Board newAggresiveBoard = new Board(boards[3]);
                                 foreach (Square target in newAggresiveBoard.SquaresOnBoard)
                                 {
-                                    if (target.XCoordinate == s2.XCoordinate && target.YCoordinate == s2.YCoordinate)
+                                    if (target.XCoordinate == s2.XCoordinate && target.YCoordinate == s2.YCoordinate && target.HasX)
                                     {
                                         target.HasX = false;
 

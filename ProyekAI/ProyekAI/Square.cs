@@ -19,6 +19,18 @@ namespace ProyekAI
         public bool HasX { get; set; }
         public bool HasO { get; set; }
 
+        public Square deepCopy()
+        {
+            Square s = new Square(this.XCoordinate, this.YCoordinate, this.HasX, this.HasO);
+            return s;
+        }
+        public Square(int xCoordinate, int yCoordinate, bool HasX, bool HasO)
+        {
+            this.XCoordinate = xCoordinate;
+            this.YCoordinate = yCoordinate;
+            this.HasX = HasX;
+            this.HasO = HasO;
+        }
         public override string ToString()
         {
             string result = "";
