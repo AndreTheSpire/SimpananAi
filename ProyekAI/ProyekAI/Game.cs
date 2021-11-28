@@ -24,6 +24,9 @@ namespace ProyekAI
         public Player PlayerX;
         public Player PlayerO;
         public Player currentPlayer;
+        private Move CurrentMovepassive { get; set; }
+
+        private Move CurrentMoveaggresive { get; set; }
         public Game()
         {
             InitializeComponent();
@@ -74,23 +77,39 @@ namespace ProyekAI
             Refresh();
             if (currentPlayer==PlayerX)//kalau bot
             {
+                
+            }
+            else
+            {
+                Turn turn = new Turn(this);
                 //AI Jalan
                 //minimax
                 Board[] duplicatedBoard = new Board[4];
-                for(int i= 0; i<4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     duplicatedBoard[i] = (Board)mainBoards[i].deepCopy();
                 }
                 Evaluator eval = new Evaluator(duplicatedBoard);
                 Action best = eval.bestAction;
-                currentPlayer = PlayerO;
-                turnplayer.Text = "Turn :Player O";
+                tbX.Text = (best.passiveStart.XCoordinate - 1).ToString();
+                tbY.Text = (best.passiveStart.YCoordinate - 1).ToString();
+                tbXX.Text = (best.passiveDestination.XCoordinate - 1).ToString();
+                tbYY.Text = (best.passiveDestination.YCoordinate - 1).ToString();
+
+                comboBox1.SelectedIndex = best.aggresive.BoardNumber - 1;
+                tbbX.Text = (best.aggresiveStart.XCoordinate - 1).ToString();
+                tbbY.Text = (best.aggresiveStart.YCoordinate - 1).ToString();
+                tbbXX.Text = (best.aggresiveDestination.XCoordinate - 1).ToString();
+                tbbYY.Text = (best.aggresiveDestination.YCoordinate - 1).ToString();
+                turn = new Turn(this);
+                //this.CurrentMovepassive = new Move(best.passiveStart, best.passiveDestination, best.passive, this.PlayerX.Name, true);
+                //this.CurrentMoveaggresive = new Move(best.aggresiveStart, best.aggresiveDestination, best.aggresive, this.PlayerX.Name, false);
+                //ExecuteCurrentMove(this.CurrentMovepassive);
+                //ExecuteCurrentMove(this.CurrentMoveaggresive);
+
+                //currentPlayer = PlayerO;
+                //turnplayer.Text = "Turn :Player O";
                 Refresh();
-            }
-            else
-            {
-                Turn turn = new Turn(this);
-                
             }
             
         }
@@ -182,6 +201,46 @@ namespace ProyekAI
         private void label48_Click(object sender, EventArgs e)
         {
 
+        }
+        private void ExecuteCurrentMove(Move currentMove)
+        {
+            Console.WriteLine("batas==================");
+            Console.WriteLine(currentMove.StartSquare.HasO);
+            Console.WriteLine(currentMove.EndSquare.HasO);
+            currentMove.StartSquare.HasO = false;
+            currentMove.StartSquare.HasX = false;
+
+
+
+            Square transitionSquare = currentMove.EndSquare;
+            if (currentMove.MoveIs2Spaces)
+            {
+                transitionSquare = currentMove.BoardMoveIsOn.SquaresOnBoard[currentMove.TransitionSquareIndex()];
+            }
+            if (currentMove.GetIndexOfSquarePastMove() != -1)
+            {
+                Square squarePastMove = currentMove.BoardMoveIsOn.SquaresOnBoard[currentMove.GetIndexOfSquarePastMove()];
+                if (currentMove.EndSquare.HasX || transitionSquare.HasX)
+                {
+                    squarePastMove.HasX = true;
+                }
+                if (currentMove.EndSquare.HasO || transitionSquare.HasO)
+                {
+                    squarePastMove.HasO = true;
+                }
+            }
+            transitionSquare.HasO = false;
+            transitionSquare.HasX = false;
+            if (currentMove.PlayerMakingMove == PlayerName.X)
+            {
+                currentMove.EndSquare.HasX = true;
+                currentMove.EndSquare.HasO = false;
+            }
+            else
+            {
+                currentMove.EndSquare.HasO = true;
+                currentMove.EndSquare.HasX = false;
+            }
         }
     }
 }
