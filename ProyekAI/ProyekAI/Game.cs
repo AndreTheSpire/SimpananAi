@@ -81,6 +81,9 @@ namespace ProyekAI
                 //boardEvaluator(duplicatedBoard);
                 Evaluator eval = new Evaluator(duplicatedBoard);
                 Action best = eval.bestAction;
+                currentPlayer = PlayerO;
+                turnplayer.Text = "Turn :Player O";
+                Refresh();
             }
             else
             {
