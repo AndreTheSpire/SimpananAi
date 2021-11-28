@@ -12,6 +12,11 @@ namespace ProyekAI
         public Board[] duplicatedBoard;
         public List<Action> actions;
         public Action bestAction;
+        private Square StartSquarepassive { get; set; }
+
+        private Square StartSquareaggresive { get; set; }
+        private Square EndSquarepassive { get; set; }
+        private Square EndSquareaggresive { get; set; }
         public int index;
         public int[,] setMoves = new int[,] {
             {0,1}, {0,-1}, {1,0}, {-1,0},
@@ -21,118 +26,166 @@ namespace ProyekAI
         };
         public Evaluator(Board[] duplicatedBoard)
         {
-            this.duplicatedBoard = duplicatedBoard;
+
+            foreach (Square s in duplicatedBoard[0].SquaresOnBoard)
+            {
+                Console.WriteLine("posisi X " + s.XCoordinate + "================");
+                Console.WriteLine("posisi Y " + s.YCoordinate + "================");
+                Console.WriteLine("ada player X?  " + s.HasX + "================");
+            }
+                this.duplicatedBoard = duplicatedBoard;
             boards = new Board[4];
             Array.Copy(duplicatedBoard, boards, 4);
+            foreach (Square s in boards[0].SquaresOnBoard)
+            {
+                Console.WriteLine("posisi X " + s.XCoordinate + "================");
+                Console.WriteLine("posisi Y " + s.YCoordinate + "================");
+                Console.WriteLine("ada player X?  " + s.HasX + "================");
+            }
+
             actions = new List<Action>();
             //Possibility setiap stone
             //passive = 0, 2
+            int angka = 0;
             //agressive = 1,3
             foreach(Square s in boards[0].SquaresOnBoard)
             {
-                for(int i = 0; i<16; i++)
+                angka++;
+                Console.WriteLine("batas loop ke " + angka + "================");
+                Console.WriteLine("posisi X " + s.XCoordinate + "================");
+                Console.WriteLine("posisi Y " + s.YCoordinate + "================");
+                Console.WriteLine("ada player X?  " + s.HasX + "================");
+                for (int i = 0; i<16; i++)
                 {
+                    
                     Square destination = new Square(s.XCoordinate + setMoves[i, 0], s.YCoordinate + setMoves[i, 1]);
-                    Move m = new Move(s, destination, boards[0], PlayerName.X ,true);
-                    if (destination.XCoordinate < 0 || destination.XCoordinate > 3 || destination.YCoordinate > 3 || destination.YCoordinate < 0)
+                    
+                    if (destination.XCoordinate < 1 || destination.XCoordinate > 4 || destination.YCoordinate > 4 || destination.YCoordinate < 1)
                     {
                         Console.WriteLine("Move illegal, counting next possibilities");
                     }
-                    else if (MoveLogic.MoveIsLegal(m)){
-                        foreach(Square s1 in boards[1].SquaresOnBoard)
+                    else
+                    {
+                        Console.WriteLine("masuk sini ga ");
+                        GetStartSquareFromUser(s, boards[0]);
+                        GetEndSquareFromUser(destination, boards[0]);
+                        Console.WriteLine("start: "+StartSquarepassive);
+                        Console.WriteLine("end: "+EndSquarepassive);
+                        Move m = new Move(StartSquarepassive, EndSquarepassive, boards[0], PlayerName.X, true);
+                        if (MoveLogic.MoveIsLegal(m))
                         {
-                            Square aggresiveDest = new Square(s1.XCoordinate + setMoves[i, 0], s1.YCoordinate + setMoves[i, 1]);
-                            Move m1 = new Move(s1, aggresiveDest, boards[1], PlayerName.X, false);
-                            if (aggresiveDest.XCoordinate < 0 || aggresiveDest.XCoordinate > 3 || aggresiveDest.YCoordinate > 3 || aggresiveDest.YCoordinate < 0)
+                            foreach (Square s1 in boards[1].SquaresOnBoard)
                             {
-                                Console.WriteLine("Move illegal, counting next possibilities");
+                                
+                                Square aggresiveDest = new Square(s1.XCoordinate + setMoves[i, 0], s1.YCoordinate + setMoves[i, 1]);
+                               
+                                if (aggresiveDest.XCoordinate < 1 || aggresiveDest.XCoordinate > 4 || aggresiveDest.YCoordinate > 4 || aggresiveDest.YCoordinate < 1)
+                                {
+                                    Console.WriteLine("Move illegal, counting next possibilities");
+                                }
+                                else {
+                                    Console.WriteLine("batas loop agresive===========");
+                                    GetStartSquareFromUser(s, boards[1]);
+                                    GetEndSquareFromUser(aggresiveDest, boards[1]);
+                                    Console.WriteLine("start: " + StartSquarepassive);
+                                    Console.WriteLine("end: " + EndSquarepassive);
+                                    Move m1 = new Move(StartSquarepassive, EndSquarepassive, boards[1], PlayerName.X, false);
+
+                                    if (MoveLogic.MoveIsLegal(m1))
+                                    {
+                                        Board newPassiveBoard = new Board(boards[0]);
+                                        foreach (Square target in newPassiveBoard.SquaresOnBoard)
+                                        {
+                                            if (target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate && target.HasX)
+                                            {
+                                                target.HasX = false;
+
+                                            }
+                                            if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
+                                            {
+                                                target.HasX = true;
+                                            }
+                                        }
+                                        Board newAggresiveBoard = new Board(boards[1]);
+                                        foreach (Square target in newPassiveBoard.SquaresOnBoard)
+                                        {
+                                            if (target.XCoordinate == s1.XCoordinate && target.YCoordinate == s1.YCoordinate && target.HasX)
+                                            {
+                                                target.HasX = false;
+
+                                            }
+                                            if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
+                                            {
+                                                target.HasX = true;
+                                            }
+                                        }
+                                        int result = countSBE(newPassiveBoard, newAggresiveBoard);
+                                        //Console.WriteLine(newPassiveBoard.BoardNumber);
+                                        //Console.WriteLine(newAggresiveBoard.BoardNumber);
+                                        //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
+                                        //Console.WriteLine(destination.XCoordinate + " " + destination.YCoordinate);
+                                        //Console.WriteLine(s1.XCoordinate + " " + s.YCoordinate);
+                                        //Console.WriteLine(aggresiveDest.XCoordinate + " " + aggresiveDest.YCoordinate);
+                                        Console.WriteLine("Result SBE: " + result);
+                                        Console.WriteLine("=================================================");
+                                        actions.Add(new Action(newPassiveBoard, newAggresiveBoard, s, destination, s1, aggresiveDest, result));
+                                    }
+                                }
+                                
                             }
-                            else if(MoveLogic.MoveIsLegal(m1))
+                            foreach (Square s2 in boards[3].SquaresOnBoard)
                             {
-                                Board newPassiveBoard = new Board(boards[0]);
-                                foreach (Square target in newPassiveBoard.SquaresOnBoard)
-                                {
-                                    if (target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate &&target.HasX)
-                                    {
-                                        target.HasX = false;
+                                Square aggresiveDest = new Square(s2.XCoordinate + setMoves[i, 0], s2.YCoordinate + setMoves[i, 1]);
 
-                                    }
-                                    if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
-                                    {
-                                        target.HasX = true;
-                                    }
-                                }
-                                Board newAggresiveBoard = new Board(boards[1]);
-                                foreach (Square target in newPassiveBoard.SquaresOnBoard)
-                                {
-                                    if (target.XCoordinate == s1.XCoordinate && target.YCoordinate == s1.YCoordinate && target.HasX)
-                                    {
-                                        target.HasX = false;
 
-                                    }
-                                    if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
-                                    {
-                                        target.HasX = true;
-                                    }
-                                }
-                                int result = countSBE(newPassiveBoard, newAggresiveBoard);
-                                //Console.WriteLine(newPassiveBoard.BoardNumber);
-                                //Console.WriteLine(newAggresiveBoard.BoardNumber);
-                                //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
-                                //Console.WriteLine(destination.XCoordinate + " " + destination.YCoordinate);
-                                //Console.WriteLine(s1.XCoordinate + " " + s.YCoordinate);
-                                //Console.WriteLine(aggresiveDest.XCoordinate + " " + aggresiveDest.YCoordinate);
-                                Console.WriteLine("Result SBE: "+result);
-                                Console.WriteLine("=================================================");
-                                actions.Add(new Action(newPassiveBoard, newAggresiveBoard, s, destination, s1, aggresiveDest, result));
-                            }
-                        }
-                        foreach(Square s2 in boards[3].SquaresOnBoard)
-                        {
-                            Square aggresiveDest = new Square(s2.XCoordinate + setMoves[i, 0], s2.YCoordinate + setMoves[i, 1]);
-                            Move m2 = new Move(s2, aggresiveDest, boards[3], PlayerName.X, false);
-                            if (aggresiveDest.XCoordinate < 0 || aggresiveDest.XCoordinate > 3 || aggresiveDest.YCoordinate > 3 || aggresiveDest.YCoordinate < 0)
-                            {
-                                Console.WriteLine("Move illegal, counting next possibilities");
-                            }
-                            else if (MoveLogic.MoveIsLegal(m2))
-                            {
-                                Board newPassiveBoard = new Board(boards[0]);
-                                foreach(Square target in newPassiveBoard.SquaresOnBoard)
+                                if (aggresiveDest.XCoordinate < 1 || aggresiveDest.XCoordinate > 4 || aggresiveDest.YCoordinate > 4 || aggresiveDest.YCoordinate < 1)
                                 {
-                                    if(target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate && target.HasX)
-                                    {
-                                        target.HasX = false;
-
-                                    }
-                                    if(target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
-                                    {
-                                        target.HasX = true;
-                                    }
+                                    Console.WriteLine("Move illegal, counting next possibilities");
                                 }
-                                Board newAggresiveBoard = new Board(boards[3]);
-                                foreach (Square target in newAggresiveBoard.SquaresOnBoard)
-                                {
-                                    if (target.XCoordinate == s2.XCoordinate && target.YCoordinate == s2.YCoordinate && target.HasX)
+                                else {
+                                    GetStartSquareFromUser(s, boards[3]);
+                                    GetEndSquareFromUser(aggresiveDest, boards[3]);
+                                    Move m2 = new Move(StartSquarepassive, EndSquarepassive, boards[3], PlayerName.X, false);
+                                    if (MoveLogic.MoveIsLegal(m2))
                                     {
-                                        target.HasX = false;
+                                        Board newPassiveBoard = new Board(boards[0]);
+                                        foreach (Square target in newPassiveBoard.SquaresOnBoard)
+                                        {
+                                            if (target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate && target.HasX)
+                                            {
+                                                target.HasX = false;
 
+                                            }
+                                            if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
+                                            {
+                                                target.HasX = true;
+                                            }
+                                        }
+                                        Board newAggresiveBoard = new Board(boards[3]);
+                                        foreach (Square target in newAggresiveBoard.SquaresOnBoard)
+                                        {
+                                            if (target.XCoordinate == s2.XCoordinate && target.YCoordinate == s2.YCoordinate && target.HasX)
+                                            {
+                                                target.HasX = false;
+
+                                            }
+                                            if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
+                                            {
+                                                target.HasX = true;
+                                            }
+                                        }
+                                        int result = countSBE(newPassiveBoard, newAggresiveBoard);
+                                        //Console.WriteLine(newPassiveBoard.BoardNumber);
+                                        //Console.WriteLine(newAggresiveBoard.BoardNumber);
+                                        //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
+                                        //Console.WriteLine(destination.XCoordinate + " " + destination.YCoordinate);
+                                        //Console.WriteLine(s2.XCoordinate + " " + s2.YCoordinate);
+                                        //Console.WriteLine(aggresiveDest.XCoordinate + " " + aggresiveDest.YCoordinate);
+                                        Console.WriteLine("Result SBE: " + result);
+                                        Console.WriteLine("=================================================");
+                                        actions.Add(new Action(newPassiveBoard, newAggresiveBoard, s, destination, s2, aggresiveDest, result));
                                     }
-                                    if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
-                                    {
-                                        target.HasX = true;
-                                    }
-                                }
-                                int result = countSBE(newPassiveBoard, newAggresiveBoard);
-                                //Console.WriteLine(newPassiveBoard.BoardNumber);
-                                //Console.WriteLine(newAggresiveBoard.BoardNumber);
-                                //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
-                                //Console.WriteLine(destination.XCoordinate + " " + destination.YCoordinate);
-                                //Console.WriteLine(s2.XCoordinate + " " + s2.YCoordinate);
-                                //Console.WriteLine(aggresiveDest.XCoordinate + " " + aggresiveDest.YCoordinate);
-                                Console.WriteLine("Result SBE: " + result);
-                                Console.WriteLine("=================================================");
-                                actions.Add(new Action(newPassiveBoard, newAggresiveBoard, s, destination, s2, aggresiveDest, result));
+                                } 
                             }
                         }
                     }
@@ -282,5 +335,121 @@ namespace ProyekAI
 
             return best;
         }
+        private void GetStartSquareFromUser(Square kotak,Board bord)
+        {
+           
+            string userInputpasive = "";
+            string userInputaggresive = "";
+
+            Console.WriteLine("X :" + kotak.XCoordinate.ToString());
+            Console.WriteLine("Y :" + kotak.YCoordinate.ToString());
+
+            if (kotak.XCoordinate.ToString() == "1")
+            {
+                userInputpasive = "a";
+            }
+            else if (kotak.XCoordinate.ToString() == "2")
+            {
+                userInputpasive = "b";
+            }
+            else if (kotak.XCoordinate.ToString() == "3")
+            {
+                userInputpasive = "c";
+            }
+            else if (kotak.XCoordinate.ToString() == "4")
+            {
+                userInputpasive = "d";
+            }
+            if (kotak.YCoordinate.ToString() == "1")
+            {
+                userInputpasive += "1";
+            }
+            else if (kotak.YCoordinate.ToString() == "2")
+            {
+                userInputpasive += "2";
+            }
+            else if (kotak.YCoordinate.ToString() == "3")
+            {
+                userInputpasive += "3";
+            }
+            else if (kotak.YCoordinate.ToString() == "4")
+            {
+                userInputpasive += "4";
+            }
+
+            
+
+            Console.WriteLine("start passive: " + userInputpasive);
+            Console.WriteLine("start agrgesive: " + userInputaggresive);
+
+
+           
+            int startSquareInputpassive = Conversion.ConvertLetterNumInputToBoardIndex(userInputpasive);
+            //int startSquareInputaggresive = Conversion.ConvertLetterNumInputToBoardIndex(userInputaggresive);
+            
+            this.StartSquarepassive = bord.SquaresOnBoard[startSquareInputpassive];
+            //this.StartSquareaggresive = bord.SquaresOnBoard[startSquareInputaggresive];
+            
+        }
+        /// <summary>
+        /// Gets end square from user.  Returns false if illegal. Assigns to EndSquare if legal.
+        /// </summary>
+        private void GetEndSquareFromUser(Square kotak, Board bord)
+        {
+            string userInputpasive = "";
+            string userInputaggresive = "";
+
+            Console.WriteLine("X :" + kotak.XCoordinate.ToString());
+            Console.WriteLine("Y :" + kotak.YCoordinate.ToString());
+
+            if (kotak.XCoordinate.ToString() == "1")
+            {
+                userInputpasive = "a";
+            }
+            else if (kotak.XCoordinate.ToString() == "2")
+            {
+                userInputpasive = "b";
+            }
+            else if (kotak.XCoordinate.ToString() == "3")
+            {
+                userInputpasive = "c";
+            }
+            else if (kotak.XCoordinate.ToString() == "4")
+            {
+                userInputpasive = "d";
+            }
+            if (kotak.YCoordinate.ToString() == "1")
+            {
+                userInputpasive += "1";
+            }
+            else if (kotak.YCoordinate.ToString() == "2")
+            {
+                userInputpasive += "2";
+            }
+            else if (kotak.YCoordinate.ToString() == "3")
+            {
+                userInputpasive += "3";
+            }
+            else if (kotak.YCoordinate.ToString() == "4")
+            {
+                userInputpasive += "4";
+            }
+
+
+
+            Console.WriteLine("start passive: " + userInputpasive);
+            Console.WriteLine("start agrgesive: " + userInputaggresive);
+
+
+
+            int endSquareInputpassive = Conversion.ConvertLetterNumInputToBoardIndex(userInputpasive);
+            //int endSquareInputaggresive = Conversion.ConvertLetterNumInputToBoardIndex(userInputaggresive);
+
+            this.EndSquarepassive = bord.SquaresOnBoard[endSquareInputpassive];
+            //this.EndSquareaggresive = bord.SquaresOnBoard[endSquareInputaggresive];
+
+            
+        }
+
     }
 }

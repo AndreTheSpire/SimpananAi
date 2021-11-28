@@ -91,16 +91,38 @@ namespace ProyekAI
                 }
                 Evaluator eval = new Evaluator(duplicatedBoard);
                 Action best = eval.bestAction;
+                int angka = 0;
+                foreach (Square item in mainBoards[0].SquaresOnBoard)
+                {
+                    Console.WriteLine("square ke" + angka);
+                    Console.WriteLine("punya X?" + item.HasX);
+                    angka++;
+                }
+
+
+                Console.WriteLine("BEST MOVE = == == =");
+                Console.WriteLine("BOARD PASSIVE : " + best.passive.BoardNumber);
+                Console.WriteLine("PASSIVE START:{" + best.passiveStart.XCoordinate + "," + best.passiveStart.YCoordinate + "}");
+                Console.WriteLine("PASSIVE END:{" + best.passiveDestination.XCoordinate + "," + best.passiveDestination.YCoordinate + "}");
+                Console.WriteLine("BOARD AGGRESIVE : " + best.aggresive.BoardNumber);
+                Console.WriteLine("AGGRESSIVE START:{" + best.aggresiveStart.XCoordinate + "," + best.aggresiveStart.YCoordinate + "}");
+                Console.WriteLine("AGGRESIVE END:{" + best.aggresiveDestination.XCoordinate + "," + best.aggresiveDestination.YCoordinate + "}");
+                Console.WriteLine("Result SBE: " + best.result);
+                Console.WriteLine("--------------------------------------------");
+
+                cbBoard.SelectedIndex = best.passive.BoardNumber - 1;
                 tbX.Text = (best.passiveStart.XCoordinate - 1).ToString();
                 tbY.Text = (best.passiveStart.YCoordinate - 1).ToString();
                 tbXX.Text = (best.passiveDestination.XCoordinate - 1).ToString();
                 tbYY.Text = (best.passiveDestination.YCoordinate - 1).ToString();
 
-                comboBox1.SelectedIndex = best.aggresive.BoardNumber - 1;
+                Console.WriteLine("board :" + cbBoard.SelectedItem.ToString());
+                comboBox1.SelectedIndex = best.aggresive.BoardNumber -1;
                 tbbX.Text = (best.aggresiveStart.XCoordinate - 1).ToString();
                 tbbY.Text = (best.aggresiveStart.YCoordinate - 1).ToString();
                 tbbXX.Text = (best.aggresiveDestination.XCoordinate - 1).ToString();
                 tbbYY.Text = (best.aggresiveDestination.YCoordinate - 1).ToString();
+                Console.WriteLine("board :" + comboBox1.SelectedItem.ToString());
                 turn = new Turn(this);
                 //this.CurrentMovepassive = new Move(best.passiveStart, best.passiveDestination, best.passive, this.PlayerX.Name, true);
                 //this.CurrentMoveaggresive = new Move(best.aggresiveStart, best.aggresiveDestination, best.aggresive, this.PlayerX.Name, false);
