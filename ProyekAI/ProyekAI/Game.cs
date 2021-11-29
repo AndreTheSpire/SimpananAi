@@ -84,14 +84,24 @@ namespace ProyekAI
                 Turn turn = new Turn(this);
                 //AI Jalan
                 //minimax
+                int angka = 0;
                 Board[] duplicatedBoard = new Board[4];
+                foreach (Square item in mainBoards[0].SquaresOnBoard)
+                {
+                    Console.WriteLine("square ke" + angka);
+                    Console.WriteLine("X" + item.XCoordinate);
+                    Console.WriteLine("Y" + item.YCoordinate);
+                    Console.WriteLine("punya X?" + item.HasX);
+                    angka++;
+                }
+
                 for (int i = 0; i < 4; i++)
                 {
                     duplicatedBoard[i] = (Board)mainBoards[i].deepCopy();
                 }
                 Evaluator eval = new Evaluator(duplicatedBoard);
                 Action best = eval.bestAction;
-                int angka = 0;
+                
                 foreach (Square item in mainBoards[0].SquaresOnBoard)
                 {
                     Console.WriteLine("square ke" + angka);
@@ -102,35 +112,80 @@ namespace ProyekAI
 
                 Console.WriteLine("BEST MOVE = == == =");
                 Console.WriteLine("BOARD PASSIVE : " + best.passive.BoardNumber);
+                Console.WriteLine("PASSIVE START:{" + best.passiveStart);
                 Console.WriteLine("PASSIVE START:{" + best.passiveStart.XCoordinate + "," + best.passiveStart.YCoordinate + "}");
+                Console.WriteLine("PASSIVE END:{" + best.passiveDestination);
                 Console.WriteLine("PASSIVE END:{" + best.passiveDestination.XCoordinate + "," + best.passiveDestination.YCoordinate + "}");
                 Console.WriteLine("BOARD AGGRESIVE : " + best.aggresive.BoardNumber);
+                Console.WriteLine("AGGRESSIVE START:{" + best.aggresiveStart);
                 Console.WriteLine("AGGRESSIVE START:{" + best.aggresiveStart.XCoordinate + "," + best.aggresiveStart.YCoordinate + "}");
+                Console.WriteLine("AGGRESIVE END:{" + best.aggresiveDestination);
                 Console.WriteLine("AGGRESIVE END:{" + best.aggresiveDestination.XCoordinate + "," + best.aggresiveDestination.YCoordinate + "}");
                 Console.WriteLine("Result SBE: " + best.result);
                 Console.WriteLine("--------------------------------------------");
 
-                cbBoard.SelectedIndex = best.passive.BoardNumber - 1;
-                tbX.Text = (best.passiveStart.XCoordinate - 1).ToString();
-                tbY.Text = (best.passiveStart.YCoordinate - 1).ToString();
-                tbXX.Text = (best.passiveDestination.XCoordinate - 1).ToString();
-                tbYY.Text = (best.passiveDestination.YCoordinate - 1).ToString();
+                //cbBoard.SelectedIndex = best.passive.BoardNumber - 1;
+                //tbX.Text = (best.passiveStart.YCoordinate - 1).ToString();
+                //tbY.Text = (best.passiveStart.XCoordinate - 1).ToString();
+                //tbXX.Text = (best.passiveDestination.YCoordinate - 1).ToString();
+                //tbYY.Text = (best.passiveDestination.XCoordinate - 1).ToString();
 
-                Console.WriteLine("board :" + cbBoard.SelectedItem.ToString());
-                comboBox1.SelectedIndex = best.aggresive.BoardNumber -1;
-                tbbX.Text = (best.aggresiveStart.XCoordinate - 1).ToString();
-                tbbY.Text = (best.aggresiveStart.YCoordinate - 1).ToString();
-                tbbXX.Text = (best.aggresiveDestination.XCoordinate - 1).ToString();
-                tbbYY.Text = (best.aggresiveDestination.YCoordinate - 1).ToString();
-                Console.WriteLine("board :" + comboBox1.SelectedItem.ToString());
-                turn = new Turn(this);
-                //this.CurrentMovepassive = new Move(best.passiveStart, best.passiveDestination, best.passive, this.PlayerX.Name, true);
-                //this.CurrentMoveaggresive = new Move(best.aggresiveStart, best.aggresiveDestination, best.aggresive, this.PlayerX.Name, false);
-                //ExecuteCurrentMove(this.CurrentMovepassive);
-                //ExecuteCurrentMove(this.CurrentMoveaggresive);
+                //Console.WriteLine("board :" + cbBoard.SelectedItem.ToString());
+                //comboBox1.SelectedIndex = best.aggresive.BoardNumber -1;
+                //tbbX.Text = (best.aggresiveStart.YCoordinate - 1).ToString();
+                //tbbY.Text = (best.aggresiveStart.XCoordinate - 1).ToString();
+                //tbbXX.Text = (best.aggresiveDestination.YCoordinate - 1).ToString();
+                //tbbYY.Text = (best.aggresiveDestination.XCoordinate - 1).ToString();
+                //Console.WriteLine("board :" + comboBox1.SelectedItem.ToString());
+                //turn = new Turn(this);
 
-                //currentPlayer = PlayerO;
-                //turnplayer.Text = "Turn :Player O";
+                Square pasivestart=new Square(0,0), passivedest = new Square(0, 0), aggresivestart = new Square(0, 0), agrrasivedest = new Square(0, 0);
+                Board sementarapassive= new Board(best.passive.BoardNumber); ;
+                Board sementaraaggresive= new Board(best.aggresive.BoardNumber);
+                foreach (Board item in mainBoards)
+                {
+                    if (item.BoardNumber == best.passive.BoardNumber)
+                    {
+                        sementarapassive = item;
+                        foreach (Square kotak in item.SquaresOnBoard)
+                        {
+                            if(best.passiveStart.XCoordinate==kotak.XCoordinate&& best.passiveStart.YCoordinate == kotak.YCoordinate)
+                            {
+                                pasivestart = kotak;
+                            }
+                            if (best.passiveDestination.XCoordinate == kotak.XCoordinate && best.passiveDestination.YCoordinate == kotak.YCoordinate)
+                            {
+                                passivedest = kotak;
+                            }
+                        }
+                    }
+                }
+                foreach (Board item in mainBoards)
+                {
+                    if (item.BoardNumber == best.aggresive.BoardNumber)
+                    {
+                        sementaraaggresive = item;
+                        foreach (Square kotak in item.SquaresOnBoard)
+                        {
+                            if (best.aggresiveStart.XCoordinate == kotak.XCoordinate && best.aggresiveStart.YCoordinate == kotak.YCoordinate)
+                            {
+                                aggresivestart = kotak;
+                            }
+                            if (best.aggresiveDestination.XCoordinate == kotak.XCoordinate && best.aggresiveDestination.YCoordinate == kotak.YCoordinate)
+                            {
+                                agrrasivedest = kotak;
+                            }
+                        }
+                    }
+                }
+
+                this.CurrentMovepassive = new Move(pasivestart, passivedest, sementarapassive, this.PlayerX.Name, true);
+                this.CurrentMoveaggresive = new Move(aggresivestart, agrrasivedest, sementaraaggresive, this.PlayerX.Name, false);
+                ExecuteCurrentMove(this.CurrentMovepassive);
+                ExecuteCurrentMove(this.CurrentMoveaggresive);
+
+                currentPlayer = PlayerO;
+                turnplayer.Text = "Turn :Player O";
                 Refresh();
             }
             
@@ -181,7 +236,15 @@ namespace ProyekAI
                     {
                         l.Text = "X";
                     }
-                    
+
+                    //Console.WriteLine("angka :" + angka);
+                    //Console.WriteLine("X:" + board.SquaresOnBoard[angka].XCoordinate);
+                    //Console.WriteLine("Y:" + board.SquaresOnBoard[angka].YCoordinate);
+                    //else
+                    //{
+                    //    l.Text = ""+angka;
+                    //}
+
 
                     panelx.Controls.Add(l);
                     x += 50;
@@ -227,8 +290,8 @@ namespace ProyekAI
         private void ExecuteCurrentMove(Move currentMove)
         {
             Console.WriteLine("batas==================");
-            Console.WriteLine(currentMove.StartSquare.HasO);
-            Console.WriteLine(currentMove.EndSquare.HasO);
+            Console.WriteLine(currentMove.StartSquare.HasX);
+            Console.WriteLine(currentMove.EndSquare.HasX);
             currentMove.StartSquare.HasO = false;
             currentMove.StartSquare.HasX = false;
 
