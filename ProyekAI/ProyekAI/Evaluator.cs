@@ -27,60 +27,66 @@ namespace ProyekAI
         public Evaluator(Board[] duplicatedBoard)
         {
 
-            foreach (Square s in duplicatedBoard[1].SquaresOnBoard)
-            {
-                Console.WriteLine("posisi X " + s.XCoordinate + "================");
-                Console.WriteLine("posisi Y " + s.YCoordinate + "================");
-                Console.WriteLine("ada player X?  " + s.HasX + "================");
-            }
-                this.duplicatedBoard = duplicatedBoard;
+            //foreach (Square s in duplicatedBoard[1].SquaresOnBoard)
+            //{
+            //    Console.WriteLine("posisi X " + s.XCoordinate + "================");
+            //    Console.WriteLine("posisi Y " + s.YCoordinate + "================");
+            //    Console.WriteLine("ada player X?  " + s.HasX + "================");
+            //}
+            this.duplicatedBoard = duplicatedBoard;
             boards = new Board[4];
             Array.Copy(duplicatedBoard, boards, 4);
-            foreach (Square s in boards[1].SquaresOnBoard)
-            {
-                Console.WriteLine("posisi X " + s.XCoordinate + "================");
-                Console.WriteLine("posisi Y " + s.YCoordinate + "================");
-                Console.WriteLine("ada player X?  " + s.HasX + "================");
-            }
+            //foreach (Square s in boards[1].SquaresOnBoard)
+            //{
+            //    Console.WriteLine("posisi X " + s.XCoordinate + "================");
+            //    Console.WriteLine("posisi Y " + s.YCoordinate + "================");
+            //    Console.WriteLine("ada player X?  " + s.HasX + "================");
+            //}
 
             actions = new List<Action>();
             //Possibility setiap stone
+            Console.WriteLine("mulai evaluator================ ");
             //passive = 0, 2
             int angka = 0;
+            int cekangka = 0;
             //agressive = 1,3
             foreach(Square s in boards[0].SquaresOnBoard)
             {
-                //Console.WriteLine("batas loop cek ================");
-                //foreach (Square xx in boards[0].SquaresOnBoard)
-                //{
-                //    Console.WriteLine("posisi X " + xx.XCoordinate + "================");
-                //    Console.WriteLine("posisi Y " + xx.YCoordinate + "================");
-                //    Console.WriteLine("ada player X?  " + xx.HasX + "================");
-                //}
+                cekangka++;
+                Console.WriteLine("batas loop cek ke " + s.ToString() + " ================");
+                foreach (Square xx in boards[0].SquaresOnBoard)
+                {
+                    Console.WriteLine("square " + xx.ToString() + "================");
+                    Console.WriteLine("posisi X " + xx.XCoordinate + "================");
+                    Console.WriteLine("posisi Y " + xx.YCoordinate + "================");
+                    Console.WriteLine("ada player X?  " + xx.HasX + "================");
+                }
                 Console.WriteLine("Loop passive=================================");
-                
+
                 angka++;
                
                 if (s.HasX) {
-                    Console.WriteLine("X passive :" + s.XCoordinate);
-                    Console.WriteLine("Y passive :" + s.YCoordinate);
+                    //Console.WriteLine("X passive :" + s.XCoordinate);
+                    //Console.WriteLine("Y passive :" + s.YCoordinate);
                     for (int i = 0; i < 16; i++)
                     {
-                        Console.WriteLine("Loop passive posibility ke "+i+"=================================");
+                        //Console.WriteLine("Loop passive posibility ke "+i+"=================================");
                         Square destination = new Square(s.XCoordinate + setMoves[i, 0], s.YCoordinate + setMoves[i, 1]);
-
+                        Console.WriteLine("batas loop cek dest ke " + destination.ToString() + " ================");
                         if (destination.XCoordinate < 1 || destination.XCoordinate > 4 || destination.YCoordinate > 4 || destination.YCoordinate < 1)
                         {
-                            Console.WriteLine("target melebihi batas");
+                            //Console.WriteLine("target melebihi batas");
                         }
                         else
                         {
                             //Console.WriteLine("masuk sini ga ");
-                            GetStartSquareFromUser(s, boards[0]);
-                            GetEndSquareFromUser(destination, boards[0]);
+
+                            StartSquarepassive = s.deepCopy();
+                            EndSquarepassive =destination.deepCopy();
                             Console.WriteLine("start: " + StartSquarepassive);
                             Console.WriteLine("end: " + EndSquarepassive);
                             Move m = new Move(StartSquarepassive, EndSquarepassive, boards[0], PlayerName.X, true);
+                        
                             if (MoveLogic.MoveIsLegal(m))
                             {
                                 
@@ -101,52 +107,69 @@ namespace ProyekAI
                                         }
                                         else
                                         {
-                                            //Console.WriteLine("batas loop agresive===========");
-                                            GetStartSquareFromUser(s, boards[1]);
-                                            GetEndSquareFromUser(aggresiveDest, boards[1]);
-                                            //Console.WriteLine("start: " + StartSquarepassive);
-                                            //Console.WriteLine("end: " + EndSquarepassive);
-                                            Move m1 = new Move(StartSquarepassive, EndSquarepassive, boards[1], PlayerName.X, false);
+                                    //Console.WriteLine("batas loop agresive===========");
+                                    
+                                            StartSquareaggresive = s.deepCopy();
+                                            EndSquareaggresive=aggresiveDest.deepCopy();
+                                            Console.WriteLine("start: " + StartSquareaggresive);
+                                            Console.WriteLine("end: " + EndSquareaggresive);
+                                            Move m1 = new Move(StartSquareaggresive, EndSquareaggresive, boards[1], PlayerName.X, false);
 
                                             if (MoveLogic.MoveIsLegal(m1))
                                             {
                                                 Console.WriteLine("Move is legal");
                                                 Board newPassiveBoard = (Board)boards[0].deepCopy();
-                                                foreach (Square target in newPassiveBoard.SquaresOnBoard)
-                                                {
-                                                    if (target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate && target.HasX)
-                                                    {
-                                                        target.HasX = false;
+                                                //StartSquarepassive = GetStartSquareFromUser(s, newPassiveBoard);
+                                                //EndSquarepassive = GetEndSquareFromUser(destination, newPassiveBoard);
+                                                Move movepasive =new Move(StartSquarepassive, EndSquarepassive, newPassiveBoard, PlayerName.X, true);
+                                                ExecuteCurrentMove(movepasive);
+                                                //foreach (Square target in newPassiveBoard.SquaresOnBoard)
+                                                //{
+                                                //    if (target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate && target.HasX)
+                                                //    {
+                                                //        target.HasX = false;
 
-                                                    }
-                                                    if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
-                                                    {
-                                                        target.HasX = true;
-                                                    }
-                                                }
+                                                //    }
+                                                //    if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
+                                                //    {
+                                                //        target.HasX = true;
+                                                //    }
+                                                //}
                                                 Board newAggresiveBoard = (Board)boards[1].deepCopy();
-                                                foreach (Square target in newPassiveBoard.SquaresOnBoard)
-                                                {
-                                                    if (target.XCoordinate == s1.XCoordinate && target.YCoordinate == s1.YCoordinate && target.HasX)
-                                                    {
-                                                        target.HasX = false;
+                                                //StartSquareaggresive = GetStartSquareFromUser(s, newAggresiveBoard);
+                                                //EndSquareaggresive = GetEndSquareFromUser(aggresiveDest, newAggresiveBoard);
+                                                Move moveaggresive = new Move(StartSquareaggresive, EndSquareaggresive, newAggresiveBoard, PlayerName.X, true);
+                                                ExecuteCurrentMove(moveaggresive);
+                                                //foreach (Square target in newPassiveBoard.SquaresOnBoard)
+                                                //{
+                                                //    if (target.XCoordinate == s1.XCoordinate && target.YCoordinate == s1.YCoordinate && target.HasX)
+                                                //    {
+                                                //        target.HasX = false;
 
-                                                    }
-                                                    if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
-                                                    {
-                                                        target.HasX = true;
-                                                    }
+                                                //    }
+                                                //    if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
+                                                //    {
+                                                //        target.HasX = true;
+                                                //    }
+                                                //}
+                                                if(MoveLogic.MatchesPassiveMoveWhileAggressive(movepasive, moveaggresive))
+                                                {
+                                                    int result = countSBE(newPassiveBoard, newAggresiveBoard);
+                                                    //Console.WriteLine(newPassiveBoard.BoardNumber);
+                                                    //Console.WriteLine(newAggresiveBoard.BoardNumber);
+                                                    //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
+                                                    //Console.WriteLine(destination.XCoordinate + " " + destination.YCoordinate);
+                                                    //Console.WriteLine(s1.XCoordinate + " " + s.YCoordinate);
+                                                    //Console.WriteLine(aggresiveDest.XCoordinate + " " + aggresiveDest.YCoordinate);
+                                                    Console.WriteLine("Result SBE: " + result);
+                                                    Console.WriteLine("=================================================");
+                                                    actions.Add(new Action(newPassiveBoard, newAggresiveBoard, s, destination, s1, aggresiveDest, result));
                                                 }
-                                                int result = countSBE(newPassiveBoard, newAggresiveBoard);
-                                                //Console.WriteLine(newPassiveBoard.BoardNumber);
-                                                //Console.WriteLine(newAggresiveBoard.BoardNumber);
-                                                //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
-                                                //Console.WriteLine(destination.XCoordinate + " " + destination.YCoordinate);
-                                                //Console.WriteLine(s1.XCoordinate + " " + s.YCoordinate);
-                                                //Console.WriteLine(aggresiveDest.XCoordinate + " " + aggresiveDest.YCoordinate);
-                                                //Console.WriteLine("Result SBE: " + result);
-                                                //Console.WriteLine("=================================================");
-                                                actions.Add(new Action(newPassiveBoard, newAggresiveBoard, s, destination, s1, aggresiveDest, result));
+                                                else
+                                                {
+                                                    Console.WriteLine("move passive dan aggresive tidak sama");
+                                                }
+                                                
                                             }
                                             else
                                             {
@@ -172,48 +195,69 @@ namespace ProyekAI
                                         }
                                         else
                                         {
-                                            GetStartSquareFromUser(s, boards[3]);
-                                            GetEndSquareFromUser(aggresiveDest, boards[3]);
-                                            Move m2 = new Move(StartSquarepassive, EndSquarepassive, boards[3], PlayerName.X, false);
+
+                                            StartSquareaggresive = s.deepCopy();
+                                            EndSquareaggresive = aggresiveDest.deepCopy();
+                                            Console.WriteLine("start: " + StartSquareaggresive);
+                                            Console.WriteLine("end: " + EndSquareaggresive);
+                                            Move m2 = new Move(StartSquareaggresive, EndSquareaggresive, boards[3], PlayerName.X, false);
                                             if (MoveLogic.MoveIsLegal(m2))
                                             {
                                                 Console.WriteLine("Move is legal");
+
                                                 Board newPassiveBoard = (Board)boards[0].deepCopy();
-                                                foreach (Square target in newPassiveBoard.SquaresOnBoard)
-                                                {
-                                                    if (target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate && target.HasX)
-                                                    {
-                                                        target.HasX = false;
+                                                //StartSquareaggresive = GetStartSquareFromUser(s, newPassiveBoard);
+                                                //EndSquareaggresive = GetEndSquareFromUser(destination, newPassiveBoard);
+                                                Move movepasive = new Move(StartSquarepassive, EndSquarepassive, newPassiveBoard, PlayerName.X, true);
+                                                ExecuteCurrentMove(movepasive);
+                                                //foreach (Square target in newPassiveBoard.SquaresOnBoard)
+                                                //{
+                                                //    if (target.XCoordinate == s.XCoordinate && target.YCoordinate == s.YCoordinate && target.HasX)
+                                                //    {
+                                                //        target.HasX = false;
 
-                                                    }
-                                                    if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
-                                                    {
-                                                        target.HasX = true;
-                                                    }
-                                                }
+                                                //    }
+                                                //    if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
+                                                //    {
+                                                //        target.HasX = true;
+                                                //    }
+                                                //}
                                                 Board newAggresiveBoard = (Board)boards[3].deepCopy();
-                                                foreach (Square target in newAggresiveBoard.SquaresOnBoard)
-                                                {
-                                                    if (target.XCoordinate == s2.XCoordinate && target.YCoordinate == s2.YCoordinate && target.HasX)
-                                                    {
-                                                        target.HasX = false;
+                                                //StartSquareaggresive = GetStartSquareFromUser(s, newAggresiveBoard);
+                                                //EndSquareaggresive = GetEndSquareFromUser(aggresiveDest, newAggresiveBoard);
+                                                Move moveAgressive = new Move(StartSquareaggresive, EndSquareaggresive, newAggresiveBoard, PlayerName.X, true);
+                                                ExecuteCurrentMove(moveAgressive);
+                                                //foreach (Square target in newAggresiveBoard.SquaresOnBoard)
+                                                //{
+                                                //    if (target.XCoordinate == s2.XCoordinate && target.YCoordinate == s2.YCoordinate && target.HasX)
+                                                //    {
+                                                //        target.HasX = false;
 
-                                                    }
-                                                    if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
-                                                    {
-                                                        target.HasX = true;
-                                                    }
+                                                //    }
+                                                //    if (target.XCoordinate == destination.XCoordinate && target.YCoordinate == destination.YCoordinate)
+                                                //    {
+                                                //        target.HasX = true;
+                                                //    }
+                                                //}
+
+                                                if (MoveLogic.MatchesPassiveMoveWhileAggressive(movepasive, moveAgressive))
+                                                {
+                                                    int result = countSBE(newPassiveBoard, newAggresiveBoard);
+                                                    //Console.WriteLine(newPassiveBoard.BoardNumber);
+                                                    //Console.WriteLine(newAggresiveBoard.BoardNumber);
+                                                    //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
+                                                    //Console.WriteLine(destination.XCoordinate + " " + destination.YCoordinate);
+                                                    //Console.WriteLine(s1.XCoordinate + " " + s.YCoordinate);
+                                                    //Console.WriteLine(aggresiveDest.XCoordinate + " " + aggresiveDest.YCoordinate);
+                                                    Console.WriteLine("Result SBE: " + result);
+                                                    Console.WriteLine("=================================================");
+                                                    actions.Add(new Action(newPassiveBoard, newAggresiveBoard, s, destination, s2, aggresiveDest, result));
                                                 }
-                                                int result = countSBE(newPassiveBoard, newAggresiveBoard);
-                                                //Console.WriteLine(newPassiveBoard.BoardNumber);
-                                                //Console.WriteLine(newAggresiveBoard.BoardNumber);
-                                                //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
-                                                //Console.WriteLine(destination.XCoordinate + " " + destination.YCoordinate);
-                                                //Console.WriteLine(s2.XCoordinate + " " + s2.YCoordinate);
-                                                //Console.WriteLine(aggresiveDest.XCoordinate + " " + aggresiveDest.YCoordinate);
-                                                //Console.WriteLine("Result SBE: " + result);
-                                                //Console.WriteLine("=================================================");
-                                                actions.Add(new Action(newPassiveBoard, newAggresiveBoard, s, destination, s2, aggresiveDest, result));
+                                                else
+                                                {
+                                                    Console.WriteLine("move passive dan aggresive tidak sama");
+                                                }
+                                               
                                             }
                                             else
                                             {
@@ -377,7 +421,7 @@ namespace ProyekAI
 
             return best;
         }
-        private void GetStartSquareFromUser(Square kotak,Board bord)
+        private Square GetStartSquareFromUser(Square kotak,Board bord)
         {
            
             string userInputpasive = "";
@@ -430,7 +474,8 @@ namespace ProyekAI
             //Console.WriteLine("start int passive: " + startSquareInputpassive);
             //int startSquareInputaggresive = Conversion.ConvertLetterNumInputToBoardIndex(userInputaggresive);
 
-            this.StartSquarepassive = bord.SquaresOnBoard[startSquareInputpassive];
+            //this.StartSquarepassive = bord.SquaresOnBoard[startSquareInputpassive];
+            return bord.SquaresOnBoard[startSquareInputpassive];
             //Console.WriteLine("start square passive: " + StartSquarepassive);
             //this.StartSquareaggresive = bord.SquaresOnBoard[startSquareInputaggresive];
 
@@ -438,7 +483,7 @@ namespace ProyekAI
         /// <summary>
         /// Gets end square from user.  Returns false if illegal. Assigns to EndSquare if legal.
         /// </summary>
-        private void GetEndSquareFromUser(Square kotak, Board bord)
+        private Square GetEndSquareFromUser(Square kotak, Board bord)
         {
             string userInputpasive = "";
             string userInputaggresive = "";
@@ -489,10 +534,51 @@ namespace ProyekAI
             int endSquareInputpassive = Conversion.ConvertLetterNumInputToBoardIndex(userInputpasive);
             //int endSquareInputaggresive = Conversion.ConvertLetterNumInputToBoardIndex(userInputaggresive);
 
-            this.EndSquarepassive = bord.SquaresOnBoard[endSquareInputpassive];
+            //this.EndSquarepassive = bord.SquaresOnBoard[endSquareInputpassive];
+            return bord.SquaresOnBoard[endSquareInputpassive];
             //this.EndSquareaggresive = bord.SquaresOnBoard[endSquareInputaggresive];
 
-            
+
+        }
+        private void ExecuteCurrentMove(Move currentMove)
+        {
+            //Console.WriteLine("batas==================");
+            //Console.WriteLine(currentMove.StartSquare.HasO);
+            //Console.WriteLine(currentMove.EndSquare.HasO);
+            currentMove.StartSquare.HasO = false;
+            currentMove.StartSquare.HasX = false;
+
+
+
+            Square transitionSquare = currentMove.EndSquare;
+            if (currentMove.MoveIs2Spaces)
+            {
+                transitionSquare = currentMove.BoardMoveIsOn.SquaresOnBoard[currentMove.TransitionSquareIndex()];
+            }
+            if (currentMove.GetIndexOfSquarePastMove() != -1)
+            {
+                Square squarePastMove = currentMove.BoardMoveIsOn.SquaresOnBoard[currentMove.GetIndexOfSquarePastMove()];
+                if (currentMove.EndSquare.HasX || transitionSquare.HasX)
+                {
+                    squarePastMove.HasX = true;
+                }
+                if (currentMove.EndSquare.HasO || transitionSquare.HasO)
+                {
+                    squarePastMove.HasO = true;
+                }
+            }
+            transitionSquare.HasO = false;
+            transitionSquare.HasX = false;
+            if (currentMove.PlayerMakingMove == PlayerName.X)
+            {
+                currentMove.EndSquare.HasX = true;
+                currentMove.EndSquare.HasO = false;
+            }
+            else
+            {
+                currentMove.EndSquare.HasO = true;
+                currentMove.EndSquare.HasX = false;
+            }
         }
 
     }
