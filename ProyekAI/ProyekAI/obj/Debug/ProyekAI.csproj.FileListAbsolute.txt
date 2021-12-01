@@ -50,3 +50,4 @@ D:\kuliahsemester_5\AI\Cadangan\ProyekAI\ProyekAI\obj\Debug\ProyekAI.pdb
 D:\kuliahsemester_5\AI\Cadangan\ProyekAI\ProyekAI\bin\Debug\ProyekAI.exe.config
 D:\kuliahsemester_5\AI\Cadangan\ProyekAI\ProyekAI\bin\Debug\ProyekAI.exe
 D:\kuliahsemester_5\AI\Cadangan\ProyekAI\ProyekAI\bin\Debug\ProyekAI.pdb
+D:\kuliahsemester_5\AI\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.csproj.AssemblyReference.cache

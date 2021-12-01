@@ -30,8 +30,8 @@ namespace ProyekAI
         public Game()
         {
             InitializeComponent();
-            this.PlayerX = new Player(PlayerName.X, new int[2] { 1, 2 });
-            this.PlayerO = new Player(PlayerName.O, new int[2] { 3, 4 });
+            this.PlayerX = new Player(PlayerName.X, new int[2] { 1, 3 });
+            this.PlayerO = new Player(PlayerName.O, new int[2] { 2, 4 });
             this.currentPlayer = PlayerO;
             this.GameIsDone = false;
             for (int i = 1; i < 5; i++)
