@@ -380,5 +380,10 @@ namespace ProyekAI
                 currentMove.EndSquare.HasX = false;
             }
         }
+
+        private void btnQuitToMain_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
