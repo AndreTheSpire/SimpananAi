@@ -632,8 +632,55 @@ namespace ProyekAI
 
         public int possibleMoves(Board passiveBoard, Board aggresiveBoard)
         {
-            int stoneCount = 0;
-            return stoneCount;
+            int result = 0;
+            foreach(Square s in aggresiveBoard.SquaresOnBoard)
+            {
+                if (s.HasX)
+                {
+                    for (int i = 0; i < 16; i++)
+                    {
+                        int newX = s.XCoordinate + setMoves[i, 0];
+                        int newY = s.YCoordinate + setMoves[i, 1];
+                        foreach(Square searched in aggresiveBoard.SquaresOnBoard)
+                        {
+                            if (searched.XCoordinate == newX && searched.YCoordinate == newY)
+                            {
+                                if (searched.HasO)
+                                {
+                                    result += 3;
+                                }
+                                else if (!searched.HasX)
+                                {
+                                    result++;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            foreach (Square s in passiveBoard.SquaresOnBoard)
+            {
+                if (s.HasX)
+                {
+                    for (int i = 0; i < 16; i++)
+                    {
+                        int newX = s.XCoordinate + setMoves[i, 0];
+                        int newY = s.YCoordinate + setMoves[i, 1];
+                        foreach (Square searched in passiveBoard.SquaresOnBoard)
+                        {
+                            if (searched.XCoordinate == newX && searched.YCoordinate == newY)
+                            {
+                                if (!searched.HasO&&!searched.HasX)
+                                {
+                                    result += 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
         }
         public int countSBE(Board passiveBoard, Board aggresiveBoard,Board aggresivebeforeboard)
         {
