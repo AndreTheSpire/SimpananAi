@@ -154,7 +154,7 @@ namespace ProyekAI
                                                 //}
                                                 if(MoveLogic.MatchesPassiveMoveWhileAggressive(movepasive, moveaggresive))
                                                 {
-                                                    int result = countSBE(newPassiveBoard, newAggresiveBoard, boards[1]);
+                                                    int result = countSBE(newPassiveBoard, newAggresiveBoard, boards[1], aggresiveDest);
                                                     //Console.WriteLine(newPassiveBoard.BoardNumber);
                                                     //Console.WriteLine(newAggresiveBoard.BoardNumber);
                                                     //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
@@ -242,7 +242,7 @@ namespace ProyekAI
 
                                                 if (MoveLogic.MatchesPassiveMoveWhileAggressive(movepasive, moveAgressive))
                                                 {
-                                                    int result = countSBE(newPassiveBoard, newAggresiveBoard, boards[3]);
+                                                    int result = countSBE(newPassiveBoard, newAggresiveBoard, boards[3], aggresiveDest);
                                                     //Console.WriteLine(newPassiveBoard.BoardNumber);
                                                     //Console.WriteLine(newAggresiveBoard.BoardNumber);
                                                     //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
@@ -384,7 +384,7 @@ namespace ProyekAI
                                                 //}
                                                 if (MoveLogic.MatchesPassiveMoveWhileAggressive(movepasive, moveaggresive))
                                                 {
-                                                    int result = countSBE(newPassiveBoard, newAggresiveBoard, boards[1]);
+                                                    int result = countSBE(newPassiveBoard, newAggresiveBoard, boards[1], aggresiveDest);
                                                     //Console.WriteLine(newPassiveBoard.BoardNumber);
                                                     //Console.WriteLine(newAggresiveBoard.BoardNumber);
                                                     //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
@@ -473,7 +473,7 @@ namespace ProyekAI
 
                                                 if (MoveLogic.MatchesPassiveMoveWhileAggressive(movepasive, moveAgressive))
                                                 {
-                                                    int result = countSBE(newPassiveBoard, newAggresiveBoard, boards[3]);
+                                                    int result = countSBE(newPassiveBoard, newAggresiveBoard, boards[3], aggresiveDest);
                                                     //Console.WriteLine(newPassiveBoard.BoardNumber);
                                                     //Console.WriteLine(newAggresiveBoard.BoardNumber);
                                                     //Console.WriteLine(s.XCoordinate + " " + s.YCoordinate);
@@ -623,8 +623,33 @@ namespace ProyekAI
             }
             if (stoneCountafter < stoneCountbefore)
             {
-                result += 20;
+                result += 100;
             }
+
+
+            return result;
+        }
+        public int pushstone(Board aggresiveBoard, Square dest)
+        {
+            int stoneCountbefore = 0;
+            int stoneCountafter = 0;
+            int result = 0;
+
+            
+            foreach (Square s in aggresiveBoard.SquaresOnBoard)
+            {
+                if (s.XCoordinate==dest.XCoordinate&&s.YCoordinate==dest.YCoordinate)
+                {
+                    if (s.HasO)
+                    {
+                        result += 80;
+                    }
+                }
+            }
+            //if (stoneCountafter < stoneCountbefore)
+            //{
+            //    result += 100;
+            //}
 
 
             return result;
@@ -682,12 +707,13 @@ namespace ProyekAI
             }
             return result;
         }
-        public int countSBE(Board passiveBoard, Board aggresiveBoard,Board aggresivebeforeboard)
+        public int countSBE(Board passiveBoard, Board aggresiveBoard,Board aggresivebeforeboard,Square dest)
         {
             int result =0;//hitung result dari SBE
             result += activeStones(passiveBoard, aggresiveBoard);
             result += threatenedStones(passiveBoard);
             result += pushedstone(aggresiveBoard,aggresivebeforeboard);
+            result += pushstone(aggresivebeforeboard, dest);
             result += enemyStones(aggresiveBoard);
             result += possibleMoves(passiveBoard, aggresiveBoard);
 

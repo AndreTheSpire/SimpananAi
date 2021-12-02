@@ -165,7 +165,19 @@ namespace ProyekAI
                     Console.WriteLine("AGGRESIVE END:{" + best.aggresiveDestination.XCoordinate + "," + best.aggresiveDestination.YCoordinate + "}");
                     Console.WriteLine("Result SBE: " + best.result);
                     Console.WriteLine("--------------------------------------------");
-
+                    bestpostlist.Items.Add("BEST MOVE = == == =");
+                    bestpostlist.Items.Add("BOARD PASSIVE : " + best.passive.BoardNumber);
+                    bestpostlist.Items.Add("PASSIVE START:{" + best.passiveStart);
+                    bestpostlist.Items.Add("PASSIVE START:{" + (best.passiveStart.YCoordinate-1) + "," + (best.passiveStart.XCoordinate-1) + "}");
+                    bestpostlist.Items.Add("PASSIVE END:{" + best.passiveDestination);
+                    bestpostlist.Items.Add("PASSIVE END:{" + (best.passiveDestination.YCoordinate-1) + "," + (best.passiveDestination.XCoordinate-1) + "}");
+                    bestpostlist.Items.Add("BOARD AGGRESIVE : " + best.aggresive.BoardNumber);
+                    bestpostlist.Items.Add("AGGRESSIVE START:{" + best.aggresiveStart);
+                    bestpostlist.Items.Add("AGGRESSIVE START:{" + (best.aggresiveStart.YCoordinate-1) + "," + (best.aggresiveStart.XCoordinate-1) + "}");
+                    bestpostlist.Items.Add("AGGRESIVE END:{" + best.aggresiveDestination);
+                    bestpostlist.Items.Add("AGGRESIVE END:{" + (best.aggresiveDestination.YCoordinate-1) + "," + (best.aggresiveDestination.XCoordinate-1) + "}");
+                    bestpostlist.Items.Add("Result SBE: " + best.result);
+                    bestpostlist.Items.Add("===============================");
                     //cbBoard.SelectedIndex = best.passive.BoardNumber - 1;
                     //tbX.Text = (best.passiveStart.YCoordinate - 1).ToString();
                     //tbY.Text = (best.passiveStart.XCoordinate - 1).ToString();

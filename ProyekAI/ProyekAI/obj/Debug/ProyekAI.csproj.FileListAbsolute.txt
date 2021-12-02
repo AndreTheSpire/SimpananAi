@@ -52,3 +52,4 @@ D:\kuliahsemester_5\AI\Cadangan\ProyekAI\ProyekAI\bin\Debug\ProyekAI.exe
 D:\kuliahsemester_5\AI\Cadangan\ProyekAI\ProyekAI\bin\Debug\ProyekAI.pdb
 D:\kuliahsemester_5\AI\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.csproj.AssemblyReference.cache
 E:\Kuliah\Sem5\AI\Proyek\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.MainMenu.resources
+D:\kuliahsemester_5\AI\SimpananAi\ProyekAI\ProyekAI\obj\Debug\ProyekAI.MainMenu.resources
